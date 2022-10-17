@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.11
+# v0.19.13
 
 using Markdown
 using InteractiveUtils
@@ -11,29 +11,12 @@ begin
 end
 
 # ╔═╡ 60126b56-338b-11ed-27b5-3fad1727c222
-md"""
+@mdx """
 # Unistellar SETI Meeting Slides 🚀
 
 -- Ian Weaver
-"""
 
-# ╔═╡ 9202ccba-2186-4231-9108-ad293d506246
-@mdx """
-## 2022/08/30
-
-- Started playing with the EVscope ✨
-  - Sensor calibration and mirror alignment seemed to work smoothly
-  - Able to get pretty good exposures in a particularly bright neighborhood
-  ![eVscope-20220829-035332](https://user-images.githubusercontent.com/25312320/189976920-85908fb6-cc58-45d8-ac99-92fed33935d5.png)
-
-    ![eVscope-20220829-041317](https://user-images.githubusercontent.com/25312320/189977197-555f7103-349a-4661-bedc-df3c16d7c872.png)
-
-	![eVscope-20220829-042944](https://user-images.githubusercontent.com/25312320/189977384-087c8a28-9a07-4f7e-9d25-4963d2fd2814.png)
-
-	![eVscope-20220829-040409](https://user-images.githubusercontent.com/25312320/189977619-86eb2fa1-b045-4a0f-9d9c-80a9f5b28848.png)
-
-!!! tip "Question"
-	Is there a way to access the fits files from my end?
+<button onclick='present()'>Start</button>
 """
 
 # ╔═╡ 052ced6d-7f46-4366-986c-5af076c5105a
@@ -46,6 +29,33 @@ md"""
   - Plan to do 3 star parties
 """
 
+# ╔═╡ 1a61b700-1ab7-495e-bfce-bd689996bd1f
+struct TwoColumn{L, R}
+    left::L
+    right::R
+end
+
+# ╔═╡ 9202ccba-2186-4231-9108-ad293d506246
+@mdx """
+## 2022/08/30
+$(TwoColumn(md"""
+- Started playing with the EVscope ✨
+  - Sensor calibration and mirror alignment seemed to work smoothly
+  - Able to get pretty good exposures in a particularly bright neighborhood
+""",
+	TwoColumn(md"![eVscope-20220829-035332](https://user-images.githubusercontent.com/25312320/189976920-85908fb6-cc58-45d8-ac99-92fed33935d5.png) ![eVscope-20220829-040409](https://user-images.githubusercontent.com/25312320/189977619-86eb2fa1-b045-4a0f-9d9c-80a9f5b28848.png)", md"![eVscope-20220829-041317](https://user-images.githubusercontent.com/25312320/189977197-555f7103-349a-4661-bedc-df3c16d7c872.png) ![eVscope-20220829-042944](https://user-images.githubusercontent.com/25312320/189977384-087c8a28-9a07-4f7e-9d25-4963d2fd2814.png)")
+))
+"""
+
+# ╔═╡ 417630b7-213e-4456-bf99-1ab735f0c963
+function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
+    write(io, """<div style="display: flex;"><div style="flex: 50%;">""")
+    show(io, mime, tc.left)
+    write(io, """</div><div style="flex: 50%;">""")
+    show(io, mime, tc.right)
+    write(io, """</div></div>""")
+end
+
 # ╔═╡ 2529b704-1c93-4877-8b39-b98e99d5092a
 TableOfContents()
 
@@ -57,7 +67,7 @@ PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
 MarkdownLiteral = "~0.1.1"
-PlutoUI = "~0.7.40"
+PlutoUI = "~0.7.44"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -214,9 +224,9 @@ version = "0.3.20+0"
 
 [[deps.Parsers]]
 deps = ["Dates"]
-git-tree-sha1 = "3d5bf43e3e8b412656404ed9466f1dcbf7c50269"
+git-tree-sha1 = "6c01a9b494f6d2a9fc180a08b182fcb06f0958a0"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
-version = "2.4.0"
+version = "2.4.2"
 
 [[deps.Pkg]]
 deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
@@ -225,9 +235,9 @@ version = "1.8.0"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
-git-tree-sha1 = "a602d7b0babfca89005da04d89223b867b55319f"
+git-tree-sha1 = "6e33d318cf8843dade925e35162992145b4eb12f"
 uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
-version = "0.7.40"
+version = "0.7.44"
 
 [[deps.Printf]]
 deps = ["Unicode"]
@@ -320,7 +330,9 @@ version = "17.4.0+0"
 # ╟─60126b56-338b-11ed-27b5-3fad1727c222
 # ╟─9202ccba-2186-4231-9108-ad293d506246
 # ╟─052ced6d-7f46-4366-986c-5af076c5105a
-# ╟─2529b704-1c93-4877-8b39-b98e99d5092a
-# ╟─34983698-efd8-42d7-a2d0-f4a17dc1c324
+# ╠═1a61b700-1ab7-495e-bfce-bd689996bd1f
+# ╠═417630b7-213e-4456-bf99-1ab735f0c963
+# ╠═2529b704-1c93-4877-8b39-b98e99d5092a
+# ╠═34983698-efd8-42d7-a2d0-f4a17dc1c324
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
