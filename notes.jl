@@ -12,16 +12,19 @@ end
 
 # ╔═╡ 60126b56-338b-11ed-27b5-3fad1727c222
 @mdx """
-# Unistellar SETI Meeting Slides 🚀
-
--- Ian Weaver
-
-<button onclick='present()'>Start</button>
+<button onclick='present()'>Present</button>
 """
 
+# ╔═╡ 6a6f9a01-79ae-4a4e-b8f4-99242806989f
+function slide_title(date)
+	@mdx """# $(date) <img src=https://theme.zdassets.com/theme_assets/2254361/3cec42407d3614fbee4cc9037dc1410941c9a2bc.svg width=100rem style="float:right">
+	-- Ian Weaver
+	"""
+end
+
 # ╔═╡ 052ced6d-7f46-4366-986c-5af076c5105a
-md"""
-## 2022/09/13
+@mdx """
+$(slide_title("2022/09/13"))
 
 - Met last week with Stan Austin (*Acting Superintendent Lake Mead National Recreation Area*)
   - Help arrange astronomy events in the park
@@ -37,7 +40,8 @@ end
 
 # ╔═╡ 9202ccba-2186-4231-9108-ad293d506246
 @mdx """
-## 2022/08/30
+$(slide_title("2022/08/30"))
+
 $(TwoColumn(md"""
 - Started playing with the EVscope ✨
   - Sensor calibration and mirror alignment seemed to work smoothly
@@ -57,7 +61,7 @@ function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
 end
 
 # ╔═╡ 2529b704-1c93-4877-8b39-b98e99d5092a
-TableOfContents()
+TableOfContents(title="Unistellar")
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -330,6 +334,7 @@ version = "17.4.0+0"
 # ╟─60126b56-338b-11ed-27b5-3fad1727c222
 # ╟─9202ccba-2186-4231-9108-ad293d506246
 # ╟─052ced6d-7f46-4366-986c-5af076c5105a
+# ╠═6a6f9a01-79ae-4a4e-b8f4-99242806989f
 # ╠═1a61b700-1ab7-495e-bfce-bd689996bd1f
 # ╠═417630b7-213e-4456-bf99-1ab735f0c963
 # ╠═2529b704-1c93-4877-8b39-b98e99d5092a
