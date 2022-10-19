@@ -23,6 +23,7 @@ md"""
 # ╔═╡ 6a6f9a01-79ae-4a4e-b8f4-99242806989f
 function slide_title(date)
 	@mdx """<h1>$(date)</h1> <img src=https://theme.zdassets.com/theme_assets/2254361/3cec42407d3614fbee4cc9037dc1410941c9a2bc.svg width=100rem style="float:right">
+	
 	-- Ian Weaver
 	"""
 end;
