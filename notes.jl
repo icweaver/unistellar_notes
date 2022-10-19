@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.13
+# v0.19.14
 
 using Markdown
 using InteractiveUtils
@@ -15,22 +15,21 @@ end
 <button onclick='present()'>Present</button>
 """
 
-# ╔═╡ 1346307d-818a-4eac-815f-a9eeb390bac9
+# ╔═╡ a453b84f-42d3-4e34-b891-d95388bcf15b
 md"""
-!!! note "To-do"
-	Add Last week, this week sections
+# Slide setup
 """
 
 # ╔═╡ 6a6f9a01-79ae-4a4e-b8f4-99242806989f
 function slide_title(date)
-	@mdx """# $(date) <img src=https://theme.zdassets.com/theme_assets/2254361/3cec42407d3614fbee4cc9037dc1410941c9a2bc.svg width=100rem style="float:right">
+	@mdx """<h1>$(date)</h1> <img src=https://theme.zdassets.com/theme_assets/2254361/3cec42407d3614fbee4cc9037dc1410941c9a2bc.svg width=100rem style="float:right">
 	-- Ian Weaver
 	"""
 end;
 
 # ╔═╡ 052ced6d-7f46-4366-986c-5af076c5105a
-@mdx """
-$(slide_title("2022/09/13"))
+md"""
+$(slide_title(md"2022/09/13"))
 
 - Met last week with Stan Austin (*Acting Superintendent Lake Mead National Recreation Area*)
   - Help arrange astronomy events in the park
@@ -39,14 +38,33 @@ $(slide_title("2022/09/13"))
 """
 
 # ╔═╡ 56b4094b-bf8d-4a26-9970-bd841e0adc1f
-@mdx """
-$(slide_title("2022/10/18"))
+md"""
+$(slide_title(md"2022/10/18"))
 
-### Parks project 🌳
+### Last week
+* Parks prject originally slated for two weeks in October, 1 week in November at [Lake Mead, NV](https://www.nps.gov/lake/index.htm)
+* Pushed two weeks later
 
-- Originally slated for two weeks in October, 1 week in November at [Lake Mead, NV](https://www.nps.gov/lake/index.htm)
-- Pushed two weeks later
-- Currently getting back in touch with Fuiava Bert Fuiava, *Lake Mead Visitor Center Manager*
+### This week
+* Getting back in touch with Fuiava Bert Fuiava, *Lake Mead Visitor Center Manager*
+"""
+
+# ╔═╡ a8c28c55-860b-49e1-8795-df05956d370d
+md"""
+$(slide_title(md"2022/10/25"))
+
+### Last week
+* Got back in touch with Lake Mead (managers away at a retreat all that week)
+* Video call with Stan
+
+### This week
+* Settling on a week in November? to hold event
+* Begin planning event
+
+### Looking forward
+* Arrange eVscope transport 🔭
+* Travel to NV
+* Meet staff, put event together
 """
 
 # ╔═╡ 1a61b700-1ab7-495e-bfce-bd689996bd1f
@@ -57,15 +75,17 @@ end
 
 # ╔═╡ 9202ccba-2186-4231-9108-ad293d506246
 @mdx """
-$(slide_title("2022/08/30"))
+$(slide_title(md"2022/08/30"))
 
 $(TwoColumn(md"""
-- Started playing with the EVscope ✨
-  - Sensor calibration and mirror alignment seemed to work smoothly
-  - Able to get pretty good exposures in a particularly bright neighborhood
+* Started playing with the EVscope ✨
+* Sensor calibration and mirror alignment seemed to work smoothly
+* Able to get pretty good exposures in a particularly bright neighborhood
 """,
-	TwoColumn(md"![eVscope-20220829-035332](https://user-images.githubusercontent.com/25312320/189976920-85908fb6-cc58-45d8-ac99-92fed33935d5.png) ![eVscope-20220829-040409](https://user-images.githubusercontent.com/25312320/189977619-86eb2fa1-b045-4a0f-9d9c-80a9f5b28848.png)", md"![eVscope-20220829-041317](https://user-images.githubusercontent.com/25312320/189977197-555f7103-349a-4661-bedc-df3c16d7c872.png) ![eVscope-20220829-042944](https://user-images.githubusercontent.com/25312320/189977384-087c8a28-9a07-4f7e-9d25-4963d2fd2814.png)")
-))
+TwoColumn(
+md"![eVscope-20220829-035332](https://user-images.githubusercontent.com/25312320/189976920-85908fb6-cc58-45d8-ac99-92fed33935d5.png) ![eVscope-20220829-040409](https://user-images.githubusercontent.com/25312320/189977619-86eb2fa1-b045-4a0f-9d9c-80a9f5b28848.png)",
+md"![eVscope-20220829-041317](https://user-images.githubusercontent.com/25312320/189977197-555f7103-349a-4661-bedc-df3c16d7c872.png) ![eVscope-20220829-042944](https://user-images.githubusercontent.com/25312320/189977384-087c8a28-9a07-4f7e-9d25-4963d2fd2814.png)"
+)))
 """
 
 # ╔═╡ 417630b7-213e-4456-bf99-1ab735f0c963
@@ -78,7 +98,7 @@ function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
 end
 
 # ╔═╡ 2529b704-1c93-4877-8b39-b98e99d5092a
-TableOfContents(title="Unistellar")
+TableOfContents(title="Meeting slides ✏️")
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -97,7 +117,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.0"
 manifest_format = "2.0"
-project_hash = "18a7377773b4cb6a9f642b5ac5e7962f6a005b5e"
+project_hash = "c56075880f87fe8fc0a2e02bd1fe52fae97795b0"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
@@ -352,11 +372,12 @@ version = "17.4.0+0"
 # ╟─9202ccba-2186-4231-9108-ad293d506246
 # ╟─052ced6d-7f46-4366-986c-5af076c5105a
 # ╟─56b4094b-bf8d-4a26-9970-bd841e0adc1f
-# ╟─1346307d-818a-4eac-815f-a9eeb390bac9
-# ╟─6a6f9a01-79ae-4a4e-b8f4-99242806989f
-# ╟─1a61b700-1ab7-495e-bfce-bd689996bd1f
-# ╟─417630b7-213e-4456-bf99-1ab735f0c963
-# ╟─2529b704-1c93-4877-8b39-b98e99d5092a
-# ╟─34983698-efd8-42d7-a2d0-f4a17dc1c324
+# ╟─a8c28c55-860b-49e1-8795-df05956d370d
+# ╟─a453b84f-42d3-4e34-b891-d95388bcf15b
+# ╠═6a6f9a01-79ae-4a4e-b8f4-99242806989f
+# ╠═1a61b700-1ab7-495e-bfce-bd689996bd1f
+# ╠═417630b7-213e-4456-bf99-1ab735f0c963
+# ╠═2529b704-1c93-4877-8b39-b98e99d5092a
+# ╠═34983698-efd8-42d7-a2d0-f4a17dc1c324
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
