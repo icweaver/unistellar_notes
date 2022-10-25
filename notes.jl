@@ -55,17 +55,18 @@ md"""
 $(slide_title(md"2022/10/25"))
 
 ### Last week
-* Got back in touch with Lake Mead (managers away at a retreat all that week)
-* Video call with Stan
+* Got in touch with Lake Mead last Friday
+* Agreed to hold events in November, starting with initial 1-week trial
 
 ### This week
-* Settling on a week in November? to hold event
-* Begin planning event
+* Arranging travel with NPS/Concur for the trial week (**November 7th - 14th**)
 
 ### Looking forward
-* Arrange eVscope transport 🔭
-* Travel to NV
-* Meet staff, put event together
+* Pin down contract timeline with Lake Mead
+* Bring eVscope + eVscope 2 to trial week
+* Identify dates for official Unistellar star parties for the rest of November
+* Coordinate with local social media / community groups 
+* Center main star parties around a particular campaign / highlight importance of observing with multiple 'scopes
 """
 
 # ╔═╡ 1a61b700-1ab7-495e-bfce-bd689996bd1f
