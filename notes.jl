@@ -69,6 +69,28 @@ $(slide_title(md"2022/10/25"))
 * Center main star parties around a particular campaign / highlight importance of observing with multiple 'scopes
 """
 
+# ╔═╡ ea354d84-679d-4971-8e09-db4680188cf9
+md"""
+$(slide_title(md"2022/11/01"))
+
+### Last week
+* Confirmed Lake Mead travel/lodging funding and date range (**November 7th - 14th**)
+
+### This week
+* Define science goal(s) for events (e.g. occulations; exoplanet campaign: partial transits of *XO-7b* and *HIP-41378f* on **November 12th**)
+* Confirm travel dates
+* Set 1st event date (either **Friday 11th or Sat 12th**)
+* Begin considering ways to collect different metrics (How many attendees? Who is coming? How does this align with The Open Outdoors for Kids Grant program goals?)
+* Add park updates to new #lakemead channel
+
+### Looking forward
+* Travel to Lake Mead
+* Meet astronomy groups / unistellar users / communication coordinators in park area
+* Set up eVscopes and Dobsonians
+* Star party 🌠
+* Coordinate follow-up Unistellar blog/write-up with Lauren?
+"""
+
 # ╔═╡ 1a61b700-1ab7-495e-bfce-bd689996bd1f
 struct TwoColumn{L, R}
     left::L
@@ -375,6 +397,7 @@ version = "17.4.0+0"
 # ╟─052ced6d-7f46-4366-986c-5af076c5105a
 # ╟─56b4094b-bf8d-4a26-9970-bd841e0adc1f
 # ╟─a8c28c55-860b-49e1-8795-df05956d370d
+# ╟─ea354d84-679d-4971-8e09-db4680188cf9
 # ╟─a453b84f-42d3-4e34-b891-d95388bcf15b
 # ╠═6a6f9a01-79ae-4a4e-b8f4-99242806989f
 # ╠═1a61b700-1ab7-495e-bfce-bd689996bd1f
