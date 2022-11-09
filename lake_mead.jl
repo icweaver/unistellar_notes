@@ -18,15 +18,19 @@ img(src) = @mdx "<img src=$(src) width=200rem>"
 
 ### Double star systems (every star needs a friend)
 
-**Albierio:** Located in Cygnus. Still debated whether stars are gravitationally bound. More stars are still being discovered in this system.
+**Albierio (Cygnus):** Still debated whether stars are gravitationally bound. More stars are still being discovered in this system.
 
 $(img("https://upload.wikimedia.org/wikipedia/commons/c/c3/Almach_double_star.jpg"))
 
-**Almach:** Located in Andromeda. Actually a *quadruple* star system, but only two of them can be resolved.
+**Almach (Andromeda):** Actually a *quadruple* star system, but only two of them can be resolved.
 
 $(img("https://upload.wikimedia.org/wikipedia/commons/b/bc/Gamma_Andromedae_Components.svg"))
 
 ### Nebulae (stellar nurseries)
+
+**Helix (Aquarius):** Planetary nebula. The dot in the center is a dead star known as a white dwarf. This will be our Sun's fate one day. Other examples include the Ring and Cat's Eye nebula.
+
+$(img("https://upload.wikimedia.org/wikipedia/commons/b/b1/NGC7293_%282004%29.jpg"))
 
 ## Unistellar science
 ### [Comets 🌠](https://unistellaroptics.com/citizen-science/cometary-activity/cometary-activity-campaign/)
