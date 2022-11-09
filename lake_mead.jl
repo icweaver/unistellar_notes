@@ -10,6 +10,19 @@ using MarkdownLiteral: @mdx
 # ╔═╡ c61acf6e-94ea-4887-834a-cff09679c751
 img(src) = @mdx "<img src=$(src) width=200rem>"
 
+# ╔═╡ 41f0ae45-5f40-4328-bd72-ffd532391b8a
+md"""
+![image](https://upload.wikimedia.org/wikipedia/commons/b/bc/Gamma_Andromedae_Components.svg)
+
+
+"""
+
+# ╔═╡ 47d32680-29c8-4255-a621-c089dce318dd
+struct TwoColumn{L, R}
+    left::L
+    right::R
+end
+
 # ╔═╡ 1a42fb78-5f82-4e22-abb2-cce8ffb49e74
 @mdx """
 # 2022/11/08 -09 Programme
@@ -18,13 +31,21 @@ img(src) = @mdx "<img src=$(src) width=200rem>"
 
 ### Double star systems (every star needs a friend)
 
-**Albierio (Cygnus):** Still debated whether stars are gravitationally bound. More stars are still being discovered in this system.
-
-$(img("https://upload.wikimedia.org/wikipedia/commons/c/c3/Almach_double_star.jpg"))
-
-**Almach (Andromeda):** Actually a *quadruple* star system, but only two of them can be resolved.
-
-$(img("https://upload.wikimedia.org/wikipedia/commons/b/bc/Gamma_Andromedae_Components.svg"))
+$(TwoColumn(
+	@mdx """
+	<figure>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/NewAlbireo.jpg/220px-NewAlbireo.jpg" style="width:20rem">
+		<figcaption><b>Albierio (Cygnus):</b> Still debated whether stars are gravitationally bound. More stars are still being discovered in this system.</figcaption>
+	</figure>
+	"""
+	,
+	@mdx """
+	<figure>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Gamma_Andromedae_Components.svg/220px-Gamma_Andromedae_Components.svg.png" style="width:20rem">
+		<figcaption><b>Almach (Andromeda):</b> Actually a <i>quadruple</i> star system, but only two of them can be resolved.</figcaption>
+	</figure>
+	"""
+))
 
 ### Nebulae (stellar nurseries)
 
@@ -38,12 +59,14 @@ $(img("https://upload.wikimedia.org/wikipedia/commons/b/b1/NGC7293_%282004%29.jp
 - 29P/Schwassmann-Wachmann 1: Visible ~ 8:30pm Fri - 5:00am Fri, Sat
 """
 
-# ╔═╡ 41f0ae45-5f40-4328-bd72-ffd532391b8a
-md"""
-![image](https://upload.wikimedia.org/wikipedia/commons/b/bc/Gamma_Andromedae_Components.svg)
-
-
-"""
+# ╔═╡ d0a0b4c9-99fb-4457-a754-c8638d3fb3d5
+function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
+    write(io, """<div style="display: flex;"><div style="flex: 50%;">""")
+    show(io, mime, tc.left)
+    write(io, """</div><div style="flex: 50%;">""")
+    show(io, mime, tc.right)
+    write(io, """</div></div>""")
+end
 
 # ╔═╡ 8f46e430-5fe4-11ed-2346-fb8fe7373ad5
 md"""
@@ -164,6 +187,8 @@ uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 # ╠═1a42fb78-5f82-4e22-abb2-cce8ffb49e74
 # ╠═c61acf6e-94ea-4887-834a-cff09679c751
 # ╠═41f0ae45-5f40-4328-bd72-ffd532391b8a
+# ╠═47d32680-29c8-4255-a621-c089dce318dd
+# ╠═d0a0b4c9-99fb-4457-a754-c8638d3fb3d5
 # ╠═8f46e430-5fe4-11ed-2346-fb8fe7373ad5
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
