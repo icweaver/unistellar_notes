@@ -91,6 +91,39 @@ $(slide_title(md"2022/11/01"))
 * Coordinate follow-up Unistellar blog/write-up with Lauren?
 """
 
+# ╔═╡ e43098d0-ca83-44f6-a533-f28497ceba56
+md"""
+$(slide_title(md"2022/11/08"))
+Funding from parks: National Park Foundation
+  - school age students, urbanism, bus students in from city, LAKE program
+  - distance learning programming
+  - what are the cultural connections to astronomy?
+  - combining
+  - GBI (Great Basin Institute) grant possible assistant to work with Ian
+  - Aiming to reach 1,500 students, 60 teachers, thirty schools, 150 chaperones by May
+  - Program anticipates serving 1,000 students in Clark County School Districy, 500 students in Bullhead City School
+    District
+    - Transportation: 
+  - 4 distance learning products to be posted on the NPS site
+
+Astro in the area:
+  - Las Vegas Astronomical Society
+  - College of Southern Nevada: strong astronomy program
+  - Dr. John Keller RECON Program, rural telescope network program: www.tnoRECOn.net
+  - Ashley Pipkin: soundscapes and science
+  - Colors of Southern Nevada planetarium
+
+Western National Park $17,500 funding granted, could use to set up a wifi network with starlink
+
+Ask Franck about budget item for Ryan, NSPIRES, how does Ryan fit in?
+
+How many hours can I commit?
+
+National Park on-site possibility:
+
+There are flyers!
+"""
+
 # ╔═╡ 1a61b700-1ab7-495e-bfce-bd689996bd1f
 struct TwoColumn{L, R}
     left::L
@@ -397,7 +430,8 @@ version = "17.4.0+0"
 # ╟─052ced6d-7f46-4366-986c-5af076c5105a
 # ╟─56b4094b-bf8d-4a26-9970-bd841e0adc1f
 # ╟─a8c28c55-860b-49e1-8795-df05956d370d
-# ╟─ea354d84-679d-4971-8e09-db4680188cf9
+# ╠═ea354d84-679d-4971-8e09-db4680188cf9
+# ╟─e43098d0-ca83-44f6-a533-f28497ceba56
 # ╟─a453b84f-42d3-4e34-b891-d95388bcf15b
 # ╠═6a6f9a01-79ae-4a4e-b8f4-99242806989f
 # ╠═1a61b700-1ab7-495e-bfce-bd689996bd1f

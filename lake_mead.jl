@@ -80,37 +80,8 @@ function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
     write(io, """</div></div>""")
 end
 
-# ╔═╡ 8f46e430-5fe4-11ed-2346-fb8fe7373ad5
-md"""
-Funding from parks: National Park Foundation
-  - school age students, urbanism, bus students in from city, LAKE program
-  - distance learning programming
-  - what are the cultural connections to astronomy?
-  - combining
-  - GBI (Great Basin Institute) grant possible assistant to work with Ian
-  - Aiming to reach 1,500 students, 60 teachers, thirty schools, 150 chaperones by May
-  - Program anticipates serving 1,000 students in Clark County School Districy, 500 students in Bullhead City School
-    District
-    - Transportation: 
-  - 4 distance learning products to be posted on the NPS site
-
-Astro in the area:
-  - Las Vegas Astronomical Society
-  - College of Southern Nevada: strong astronomy program
-  - Dr. John Keller RECON Program, rural telescope network program: www.tnoRECOn.net
-  - Ashley Pipkin: soundscapes and science
-  - Colors of Southern Nevada planetarium
-
-Western National Park $17,500 funding granted, could use to set up a wifi network with starlink
-
-Ask Franck about budget item for Ryan, NSPIRES, how does Ryan fit in?
-
-How many hours can I commit?
-
-National Park on-site possibility:
-
-There are flyers!
-"""
+# ╔═╡ 27f2e6fd-fc9e-4051-91a0-9161d22d00e9
+TableOfContents()
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -390,13 +361,13 @@ version = "17.4.0+0"
 """
 
 # ╔═╡ Cell order:
-# ╠═2edebe96-59c0-4ebf-acd7-d74f5bd2975f
 # ╠═1a42fb78-5f82-4e22-abb2-cce8ffb49e74
 # ╠═c61acf6e-94ea-4887-834a-cff09679c751
 # ╠═adb284f6-67d4-4817-834b-d015c455b51f
 # ╠═47d32680-29c8-4255-a621-c089dce318dd
 # ╠═d0a0b4c9-99fb-4457-a754-c8638d3fb3d5
-# ╠═8f46e430-5fe4-11ed-2346-fb8fe7373ad5
+# ╠═2edebe96-59c0-4ebf-acd7-d74f5bd2975f
+# ╠═27f2e6fd-fc9e-4051-91a0-9161d22d00e9
 # ╠═f2d5c24d-9454-4b38-8dcc-dc2564086baa
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
