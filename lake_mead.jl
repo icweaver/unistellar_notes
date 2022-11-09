@@ -11,15 +11,15 @@ using MarkdownLiteral: @mdx
 using PlutoUI
 
 # ╔═╡ c61acf6e-94ea-4887-834a-cff09679c751
-img(src) = @mdx "<img src=$(src) width=200rem>"
+img(src) = @mdx "<img src=$(src) width=200rem>";
 
 # ╔═╡ adb284f6-67d4-4817-834b-d015c455b51f
 fig_cap(src, cap) = @mdx """
-<div class="image" style="display:table;">
-	<img src=$(src)>
+<div class="image" style="display:table">
+	<img src=$(src) width=250rem height=250rem>
 	<div style="display:table-caption;caption-side:bottom;">$(cap)</div>
 </div>
-"""
+""";
 
 # ╔═╡ 47d32680-29c8-4255-a621-c089dce318dd
 struct TwoColumn{L, R}
@@ -28,12 +28,14 @@ struct TwoColumn{L, R}
 end
 
 # ╔═╡ 1a42fb78-5f82-4e22-abb2-cce8ffb49e74
-@mdx """
-# 2022/11/08 -09 Programme
+md"""
+# Programme (2022/11/08)
 
 ## Star party objects
 
-### Double star systems (every star needs a friend)
+### Double star systems
+
+*every star needs a friend*
 
 $(TwoColumn(
 	fig_cap(
@@ -46,7 +48,9 @@ $(TwoColumn(
 	)
 ))
 
-### Nebulae (stellar nurseries)
+### Nebulae
+
+*stellar nurseries*
 
 $(TwoColumn(
 	fig_cap(
@@ -55,12 +59,24 @@ $(TwoColumn(
 	),
 	fig_cap(
 		"https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/260px-Crab_Nebula.jpg",
-		@mdx "**Crab (Taurus):** Formed from a much more powerful event, the first every supernovae ever recorded in human history (China 1054 AD). These are responsible for creating many of the heavy elements found here on Earth."
+		@mdx "**Crab (Taurus):** Formed from a much more powerful event, the first every supernovae ever recorded in human history (China 1054 AD). These are responsible for creating many of the heavy elements found here on Earth today."
 	)
 ))
 
-### Galaxies (far far away)
+### Galaxies
 
+*far far away*
+
+$(TwoColumn(
+	fig_cap(
+		"https://i.stack.imgur.com/xxLeB.jpg",
+		@mdx "**Andromeda (Andromeda):** Our closest neighbor. Also a spiral galaxy, also crashing towards us. Won't happen for a while, around the same time that our Sun will begin to die (~ 5 billion years from now)."
+	),
+	fig_cap(
+		"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/PESSTO_Snaps_Supernova_in_Messier_74.jpg/300px-PESSTO_Snaps_Supernova_in_Messier_74.jpg",
+		@mdx "**Phantom (Pisces):** Also a spiral galaxy. Extremely symmetrical, recently captured by JWST in brilliant IR."
+	)
+))
 
 ## Unistellar science
 ### [Comets 🌠](https://unistellaroptics.com/citizen-science/cometary-activity/cometary-activity-campaign/)
@@ -358,13 +374,13 @@ version = "17.4.0+0"
 """
 
 # ╔═╡ Cell order:
-# ╠═1a42fb78-5f82-4e22-abb2-cce8ffb49e74
-# ╠═c61acf6e-94ea-4887-834a-cff09679c751
-# ╠═adb284f6-67d4-4817-834b-d015c455b51f
-# ╠═47d32680-29c8-4255-a621-c089dce318dd
-# ╠═d0a0b4c9-99fb-4457-a754-c8638d3fb3d5
-# ╠═2edebe96-59c0-4ebf-acd7-d74f5bd2975f
-# ╠═27f2e6fd-fc9e-4051-91a0-9161d22d00e9
-# ╠═f2d5c24d-9454-4b38-8dcc-dc2564086baa
+# ╟─1a42fb78-5f82-4e22-abb2-cce8ffb49e74
+# ╟─c61acf6e-94ea-4887-834a-cff09679c751
+# ╟─adb284f6-67d4-4817-834b-d015c455b51f
+# ╟─47d32680-29c8-4255-a621-c089dce318dd
+# ╟─d0a0b4c9-99fb-4457-a754-c8638d3fb3d5
+# ╟─2edebe96-59c0-4ebf-acd7-d74f5bd2975f
+# ╟─27f2e6fd-fc9e-4051-91a0-9161d22d00e9
+# ╟─f2d5c24d-9454-4b38-8dcc-dc2564086baa
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
