@@ -7,12 +7,34 @@ using InteractiveUtils
 # ╔═╡ 2edebe96-59c0-4ebf-acd7-d74f5bd2975f
 using MarkdownLiteral: @mdx
 
+# ╔═╡ c61acf6e-94ea-4887-834a-cff09679c751
+img(src) = @mdx "<img src=$(src) width=200rem>"
+
 # ╔═╡ 1a42fb78-5f82-4e22-abb2-cce8ffb49e74
-md"""
+@mdx """
 # 2022/11/08 -09 Programme
 
-## [Comets 🌠](https://unistellaroptics.com/citizen-science/cometary-activity/cometary-activity-campaign/)
-- 285P/LINEAR: Visible starting ~ 7:00 - 9:00 pm Fri and Sat
+## Star party objects
+
+### Double star systems
+
+**Albierio:** Located in Cygnus. Still debated whether stars are gravitationally bound. More stars are still being discovered in this system.
+
+$(img("https://upload.wikimedia.org/wikipedia/commons/c/c3/Almach_double_star.jpg"))
+
+**Almach:** Located in Andromeda. Actually a *quadruple* star system, but only two of them can be resolved.
+
+$(img("https://upload.wikimedia.org/wikipedia/commons/b/bc/Gamma_Andromedae_Components.svg"))
+
+## Unistellar science
+### [Comets 🌠](https://unistellaroptics.com/citizen-science/cometary-activity/cometary-activity-campaign/)
+- 285P/LINEAR: Visible ~ 7:00 - 9:00 pm Fri, Sat
+- 29P/Schwassmann-Wachmann 1: Visible ~ 8:30pm Fri - 5:00am Fri, Sat
+"""
+
+# ╔═╡ 41f0ae45-5f40-4328-bd72-ffd532391b8a
+md"""
+![image](https://upload.wikimedia.org/wikipedia/commons/b/bc/Gamma_Andromedae_Components.svg)
 
 
 """
@@ -134,6 +156,8 @@ uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 # ╔═╡ Cell order:
 # ╠═2edebe96-59c0-4ebf-acd7-d74f5bd2975f
 # ╠═1a42fb78-5f82-4e22-abb2-cce8ffb49e74
+# ╠═c61acf6e-94ea-4887-834a-cff09679c751
+# ╠═41f0ae45-5f40-4328-bd72-ffd532391b8a
 # ╠═8f46e430-5fe4-11ed-2346-fb8fe7373ad5
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
