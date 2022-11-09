@@ -4,6 +4,21 @@
 using Markdown
 using InteractiveUtils
 
+# ╔═╡ 1a42fb78-5f82-4e22-abb2-cce8ffb49e74
+md"""
+# 2022/11/08 -09 Programme
+
+## [Comets 🌠](https://unistellaroptics.com/citizen-science/cometary-activity/cometary-activity-campaign/)
+- ATLAS (C/2019 L3): Visible starting 2:00am on Saturday
+
+## [Asteriods 🪨](https://unistellaroptics.com/citizen-science/asteroid-occultations/)
+- 
+
+## [Exoplanets 🪐](https://unistellaroptics.com/citizen-science/exoplanets/)
+- TOI 3952.01 - capture ingress ~ 10:00 pm - 1:00 am starting Friday
+![image](https://user-images.githubusercontent.com/25312320/200755268-c10d1b3c-5ebe-4ac0-bef3-a16ebfea4a89.png)
+"""
+
 # ╔═╡ 8f46e430-5fe4-11ed-2346-fb8fe7373ad5
 md"""
 Funding from parks: National Park Foundation
@@ -53,6 +68,7 @@ project_hash = "da39a3ee5e6b4b0d3255bfef95601890afd80709"
 """
 
 # ╔═╡ Cell order:
+# ╠═1a42fb78-5f82-4e22-abb2-cce8ffb49e74
 # ╠═8f46e430-5fe4-11ed-2346-fb8fe7373ad5
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
