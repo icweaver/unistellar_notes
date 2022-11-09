@@ -15,10 +15,10 @@ img(src) = @mdx "<img src=$(src) width=200rem>"
 
 # ╔═╡ adb284f6-67d4-4817-834b-d015c455b51f
 fig_cap(src, cap) = @mdx """
-<figure>
-	<img src=$(src) style="width:20rem height:20rem">
-	<figcaption>$(cap)</figcaption>
-</figure>
+<div class="image" style="display:table;">
+	<img src=$(src)>
+	<div style="display:table-caption;caption-side:bottom;">$(cap)</div>
+</div>
 """
 
 # ╔═╡ 47d32680-29c8-4255-a621-c089dce318dd
@@ -36,19 +36,14 @@ end
 ### Double star systems (every star needs a friend)
 
 $(TwoColumn(
-	@mdx """
-	<figure>
-		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/NewAlbireo.jpg/220px-NewAlbireo.jpg" style="width:20rem">
-		<figcaption><b>Albierio (Cygnus):</b> Still debated whether stars are gravitationally bound. More stars are still being discovered in this system.</figcaption>
-	</figure>
-	"""
-	,
-	@mdx """
-	<figure>
-		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Gamma_Andromedae_Components.svg/220px-Gamma_Andromedae_Components.svg.png" style="width:20rem">
-		<figcaption><b>Almach (Andromeda):</b> Actually a <i>quadruple</i> star system, but only two of them can be resolved.</figcaption>
-	</figure>
-	"""
+	fig_cap(
+		"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/NewAlbireo.jpg/220px-NewAlbireo.jpg",
+		@mdx "**Albierio (Cygnus):** Still debated whether stars are gravitationally bound. More stars are still being discovered in this system."
+	),
+	fig_cap(
+		"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Gamma_Andromedae_Components.svg/220px-Gamma_Andromedae_Components.svg.png",
+		@mdx "**Almach (Andromeda):** Actually a *quadruple* star system, but only two of them can be resolved."
+	)
 ))
 
 ### Nebulae (stellar nurseries)
@@ -60,9 +55,11 @@ $(TwoColumn(
 	),
 	fig_cap(
 		"https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/260px-Crab_Nebula.jpg",
-		@mdx "**Crab (Taurus):** yee"
+		@mdx "**Crab (Taurus):** Formed from a much more powerful event, the first every supernovae ever recorded in human history (China 1054 AD). These are responsible for creating many of the heavy elements found here on Earth."
 	)
 ))
+
+### Galaxies (far far away)
 
 
 ## Unistellar science
