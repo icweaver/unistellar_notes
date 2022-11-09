@@ -16,7 +16,7 @@ img(src) = @mdx "<img src=$(src) width=200rem>"
 
 ## Star party objects
 
-### Double star systems
+### Double star systems (every star needs a friend)
 
 **Albierio:** Located in Cygnus. Still debated whether stars are gravitationally bound. More stars are still being discovered in this system.
 
@@ -25,6 +25,8 @@ $(img("https://upload.wikimedia.org/wikipedia/commons/c/c3/Almach_double_star.jp
 **Almach:** Located in Andromeda. Actually a *quadruple* star system, but only two of them can be resolved.
 
 $(img("https://upload.wikimedia.org/wikipedia/commons/b/bc/Gamma_Andromedae_Components.svg"))
+
+### Nebulae (stellar nurseries)
 
 ## Unistellar science
 ### [Comets 🌠](https://unistellaroptics.com/citizen-science/cometary-activity/cometary-activity-campaign/)
