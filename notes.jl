@@ -179,6 +179,9 @@ $(slide_title(md"2022/01/03 🎉"))
 ### This week/looking forward
 * Schedule follow-up meeting with Lake Mead
 
+	* Confirm dates and travel
+	* Reach out to Unistellar comms once dates are in place
+
 * Start putting together new observation program (last one here)
 	* Potential targets/timeline:
 		* **[C/2022 E3](https://www.unistellar.com/citizen-science/comets/missions/):** Closest approch Wed Feb 1. Would that weekend be too late to catch it? Previous weekend also suggested for proximity to new Moon
