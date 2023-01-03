@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.14
+# v0.19.19
 
 using Markdown
 using InteractiveUtils
@@ -124,6 +124,67 @@ National Park on-site possibility:
 There are flyers!
 """
 
+# ╔═╡ abbda4fc-f752-462b-8fd5-55307ef1a1f7
+md"""
+$(slide_title(md"2022/11/29"))
+
+### Last week
+* 🦃
+
+### This week
+* Parks: We have funding =D
+* Will meet with Dora Martinez (*Lake Mead Interpretation and Education Coordinator*) to begin discussing December event
+
+### Looking forward
+After meeting with Dora:
+* Reach out to Lauren about coordinating with Stefani Dawn (*Lake Meade Public Affairs Specialist*) on SETI/Unistellar comms
+* Work with Daniel to start addressing NPF education goals (attached in `#lakemeade` channel)
+* Rename `#lakemeade` → `#lakemead`
+* Begin curating targets for December:
+  * TIC 139 - "TESS one hit wonder"?
+"""
+
+# ╔═╡ c94ec08b-9f9f-4bae-bfd7-7132cb46ad41
+md"""
+$(slide_title(md"2022/12/06"))
+
+### Last week
+* Learned that Dora has been sick
+
+### This week
+* Get in touch with other Lake Mead contacts
+
+### Looking forward
+* Still plan for event at end of month?
+"""
+
+# ╔═╡ 5f1bd22b-fa61-4ce9-b78e-777086e4903a
+md"""
+$(slide_title(md"2022/12/13"))
+
+### Last week
+* Lake Mead asked to move our meeting due to an unexpected circumstance
+
+### This week
+* 🦗 🦗 🦗
+
+### Looking forward
+* Push next event to January?
+"""
+
+# ╔═╡ 1396dad3-7b77-4ee7-bcf5-4f45f8ee5d98
+@mdx """
+$(slide_title(md"2022/01/03 🎉"))
+
+### This week/looking forward
+* Schedule follow-up meeting with Lake Mead
+
+* Start putting together new observation program (last one here)
+	* Potential targets/timeline:
+		* **[C/2022 E3](https://www.unistellar.com/citizen-science/comets/missions/):** Closest approch Wed Feb 1. Would that weekend be too late to catch it? Previous weekend also suggested for proximity to new Moon
+		* **[Messier Marathon](https://en.wikipedia.org/wiki/Messier_marathon):** March 17 (Also St, Patrick's Day, might get larger crowd) and 24. March 24-30 could be a secondary option
+"""
+
 # ╔═╡ 1a61b700-1ab7-495e-bfce-bd689996bd1f
 struct TwoColumn{L, R}
     left::L
@@ -172,7 +233,7 @@ PlutoUI = "~0.7.44"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.0"
+julia_version = "1.8.4"
 manifest_format = "2.0"
 project_hash = "c56075880f87fe8fc0a2e02bd1fe52fae97795b0"
 
@@ -207,7 +268,7 @@ version = "0.8.6"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
-version = "0.5.2+0"
+version = "1.0.1+0"
 
 [[deps.Crayons]]
 git-tree-sha1 = "249fe38abf76d48563e2f4556bebd215aa317e15"
@@ -380,7 +441,7 @@ version = "1.0.0"
 [[deps.Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
-version = "1.10.0"
+version = "1.10.1"
 
 [[deps.Test]]
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
@@ -426,12 +487,16 @@ version = "17.4.0+0"
 
 # ╔═╡ Cell order:
 # ╟─60126b56-338b-11ed-27b5-3fad1727c222
-# ╠═9202ccba-2186-4231-9108-ad293d506246
+# ╟─9202ccba-2186-4231-9108-ad293d506246
 # ╟─052ced6d-7f46-4366-986c-5af076c5105a
 # ╟─56b4094b-bf8d-4a26-9970-bd841e0adc1f
 # ╟─a8c28c55-860b-49e1-8795-df05956d370d
-# ╠═ea354d84-679d-4971-8e09-db4680188cf9
+# ╟─ea354d84-679d-4971-8e09-db4680188cf9
 # ╟─e43098d0-ca83-44f6-a533-f28497ceba56
+# ╟─abbda4fc-f752-462b-8fd5-55307ef1a1f7
+# ╟─c94ec08b-9f9f-4bae-bfd7-7132cb46ad41
+# ╟─5f1bd22b-fa61-4ce9-b78e-777086e4903a
+# ╟─1396dad3-7b77-4ee7-bcf5-4f45f8ee5d98
 # ╟─a453b84f-42d3-4e34-b891-d95388bcf15b
 # ╠═6a6f9a01-79ae-4a4e-b8f4-99242806989f
 # ╠═1a61b700-1ab7-495e-bfce-bd689996bd1f
