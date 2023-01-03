@@ -182,10 +182,10 @@ $(slide_title(md"2022/01/03 🎉"))
 	* Confirm dates and travel
 	* Reach out to Unistellar comms once dates are in place
 
-* Start putting together new observation program (last one here)
+* Start putting together new observation program (last one [here](https://icweaver.github.io/unistellar_notes/lake_mead.jl.html))
 	* Potential targets/timeline:
 		* **[C/2022 E3](https://www.unistellar.com/citizen-science/comets/missions/):** Closest approch Wed Feb 1. Would that weekend be too late to catch it? Previous weekend also suggested for proximity to new Moon
-		* **[Messier Marathon](https://en.wikipedia.org/wiki/Messier_marathon):** March 17 (Also St, Patrick's Day, might get larger crowd) and 24. March 24-30 could be a secondary option
+		* **[Messier Marathon](https://en.wikipedia.org/wiki/Messier_marathon):** March 17 (St. Patrick's Day, might get larger crowd) and 24. March 24-30 could be a secondary option
 """
 
 # ╔═╡ 1a61b700-1ab7-495e-bfce-bd689996bd1f
