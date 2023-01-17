@@ -188,6 +188,19 @@ $(slide_title(md"2022/01/03 🎉"))
 		* **[Messier Marathon](https://en.wikipedia.org/wiki/Messier_marathon):** March 17 (St. Patrick's Day, might get larger crowd) and 24. March 24-30 could be a secondary option
 """
 
+# ╔═╡ 5deb0784-a746-4b58-82a0-8f43f1a7f34a
+md"""
+$(slide_title(md"2022/01/17"))
+
+### Last week
+* Update from Lake Mead: Funding delayed
+* Next event shifted to end of Feb
+
+### This week/looking forward
+* Confirm funding/travel dates
+* Put together new list of targets for last week of Feb
+"""
+
 # ╔═╡ 1a61b700-1ab7-495e-bfce-bd689996bd1f
 struct TwoColumn{L, R}
     left::L
@@ -236,7 +249,7 @@ PlutoUI = "~0.7.44"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.4"
+julia_version = "1.8.5"
 manifest_format = "2.0"
 project_hash = "c56075880f87fe8fc0a2e02bd1fe52fae97795b0"
 
@@ -500,6 +513,7 @@ version = "17.4.0+0"
 # ╟─c94ec08b-9f9f-4bae-bfd7-7132cb46ad41
 # ╟─5f1bd22b-fa61-4ce9-b78e-777086e4903a
 # ╟─1396dad3-7b77-4ee7-bcf5-4f45f8ee5d98
+# ╟─5deb0784-a746-4b58-82a0-8f43f1a7f34a
 # ╟─a453b84f-42d3-4e34-b891-d95388bcf15b
 # ╠═6a6f9a01-79ae-4a4e-b8f4-99242806989f
 # ╠═1a61b700-1ab7-495e-bfce-bd689996bd1f
