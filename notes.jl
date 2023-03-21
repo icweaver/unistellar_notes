@@ -25,20 +25,6 @@ md"""
 # Slide setup
 """
 
-# ╔═╡ ed3027f6-f87b-480d-87e9-0460188fe3be
-# color_cell(s) = @mdx """
-# <div style="background-color:#2a3f5f">
-# $(s)
-# <div>
-# """
-
-# ╔═╡ 27a7b312-e352-45f5-8717-cc4368c9e7ff
-color_cell(s) = @mdx """
-Hi
-!!! note " "
-	$(s)
-"""
-
 # ╔═╡ 6a6f9a01-79ae-4a4e-b8f4-99242806989f
 function slide_title(date)
 	@mdx """<h1>$(date)</h1> <img src=https://theme.zdassets.com/theme_assets/2254361/3cec42407d3614fbee4cc9037dc1410941c9a2bc.svg width=100rem style="float:right">
@@ -231,6 +217,59 @@ $(slide_title(md"2022/01/24"))
   * Las Vegas Astronomical Society interested in joint event on the 24th/25th
 """
 
+# ╔═╡ bfb24c44-2064-4d23-a2de-8325b698c445
+md"""
+$(slide_title(md"2022/02/07"))
+
+**Last week**
+* Back on track for 24-25th Feb with Lake Mead 🌲
+* Funding through GBI + NPS, "official" start date 13 or 20 Feb
+* 260 hour commitment (6 star parties + education materials)
+
+**This week / looking forward**
+* Solidify timeline and budget
+* Connect with LVAS for first event (Lake Mead staff already arranged)
+* Do we still advertise this if SETI is not currently involved?
+"""
+
+# ╔═╡ 9e3fcfd0-263e-4b34-929b-ed039e4912bb
+md"""
+$(slide_title(md"2023/02/21"))
+
+**Last week**
+* 🙃 Lake Mead: Bureaucratic boogaloo
+* 🙂 Galaxy Explorers!
+
+**This week / looking forward**
+* Wistfully look at my inbox
+"""
+
+# ╔═╡ c0f357dd-80b1-4eac-9dba-27a2f59104c4
+@mdx """
+$(slide_title(md"2023/03/07"))
+
+**Last week**
+* Offered/accepted short term position with Lake Mead / GBI
+	```md
+	* Perform public outreach—research, develop, organize, coordinate, and conduct special night sky events, school outreach and park site programs
+	* Develop and present a variety of astronomy recreational programs related to park themes
+	* Develop and present STEM/STEAM astronomy education programs aligned to AZ/NV State Standards
+	* May prepare and conduct astronomy education programs in school classrooms
+	* Network with community organizations to leverage resources/collaborate for program events
+	```
+
+**This week / looking forward**
+* Confirm funding for next star party (GBI getting back to us)
+"""
+
+# ╔═╡ 5b266d93-1808-4422-84b4-385a0e7f60e5
+@mdx """
+$(slide_title(md"2023/03/21"))
+
+### Updates
+$(LocalResource("/home/mango/Desktop/FeU5Kx8UcAE7qcB.jpeg"))
+"""
+
 # ╔═╡ 1a61b700-1ab7-495e-bfce-bd689996bd1f
 struct TwoColumn{L, R}
     left::L
@@ -252,25 +291,6 @@ md"![eVscope-20220829-041317](https://user-images.githubusercontent.com/25312320
 )))
 """
 
-# ╔═╡ 68835cc4-99e9-4b2e-a941-504916e1be1e
-struct ThreeColumn{L, C, R}
-    left::L
-	center::C
-    right::R
-end
-
-# ╔═╡ 3023d037-5c5d-4746-9149-d9587795ae0a
-@mdx """
-$(slide_title(md"2022/01/31"))
-
-### This week/looking forward
-**Cycle 2 AR Proposal - AIDA4JWST**
-* Start getting up to speed on AIDA codebase
-* Make sample plots
-
-$(ThreeColumn(md"![ok](https://user-images.githubusercontent.com/25312320/215855079-c0123881-e737-4515-9a66-377b4cd3d72a.png)", md"![image](https://user-images.githubusercontent.com/25312320/215855959-ad850074-86c8-4f4e-b114-a5cfe27f101f.png)", md"![image](https://user-images.githubusercontent.com/25312320/215855825-ee0ef91f-1c40-4b9d-bc45-aef76b92827c.png)"))
-"""
-
 # ╔═╡ 417630b7-213e-4456-bf99-1ab735f0c963
 function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
     write(io, """<div style="display: flex;"><div style="flex: 50%;">""")
@@ -280,16 +300,65 @@ function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
     write(io, """</div></div>""")
 end
 
-# ╔═╡ 0267882f-012f-46f4-9439-c9f8ac1bfba8
-function Base.show(io, mime::MIME"text/html", tc::ThreeColumn)
-    write(io, """<div style="display: flex;"><div style="flex: 50%;">""")
-    show(io, mime, tc.left)
-	write(io, """</div><div style="flex: 50%;">""")
-    show(io, mime, tc.center)
-    write(io, """</div><div style="flex: 50%;">""")
-    show(io, mime, tc.right)
-    write(io, """</div></div>""")
+# ╔═╡ 4f5c4623-7a39-43b2-9e20-a298c0ab5714
+function tworow(thing1, thing2)
+	@mdx """
+	<div style="display: flex;">
+		<div style="flex: 50%;">
+		$(thing1)
+	</div>
+	"""
 end
+
+# ╔═╡ 11fb513f-9853-4c64-a4c8-be63fbe35b05
+function twocol(thing1, thing2)
+	@mdx """
+	<div style="display: flex;">
+		<div style="flex: 50%;">
+		$(thing1)
+		</div>
+		<div style="flex: 50%;">
+		$(thing2)
+		</div>
+	</div>
+	"""
+end
+
+# ╔═╡ b934909b-a3a6-424f-9424-b82c316671b3
+function threecol(thing1, thing2, thing3)
+	@mdx """
+	<div style="display: flex;">
+		<div>
+		$(thing1)
+		</div>
+		<div>
+		$(thing2)
+		</div>
+		<div>
+		$(thing3)
+		</div>
+	</div>
+	"""
+end
+
+# ╔═╡ 3023d037-5c5d-4746-9149-d9587795ae0a
+@mdx """
+$(slide_title(md"2022/01/31"))
+
+### This week/looking forward
+**Cycle 2 AR Proposal - AIDA4JWST**
+* Start getting up to speed on AIDA codebase
+* Make more sample plots
+
+**Lake Mead**
+* Follow up with Franck about Dora's recent message
+
+$(threecol(
+	Resource("https://user-images.githubusercontent.com/25312320/215855079-c0123881-e737-4515-9a66-377b4cd3d72a.png"),
+	Resource("https://user-images.githubusercontent.com/25312320/215855959-ad850074-86c8-4f4e-b114-a5cfe27f101f.png"),
+	Resource("https://user-images.githubusercontent.com/25312320/215855825-ee0ef91f-1c40-4b9d-bc45-aef76b92827c.png")
+))
+"""
 
 # ╔═╡ 2529b704-1c93-4877-8b39-b98e99d5092a
 TableOfContents(title="Meeting slides ✏️")
@@ -575,17 +644,20 @@ version = "17.4.0+0"
 # ╟─1396dad3-7b77-4ee7-bcf5-4f45f8ee5d98
 # ╟─5deb0784-a746-4b58-82a0-8f43f1a7f34a
 # ╟─6903c1fc-20df-4961-8464-f54b62045f98
-# ╟─3023d037-5c5d-4746-9149-d9587795ae0a
+# ╠═3023d037-5c5d-4746-9149-d9587795ae0a
+# ╟─bfb24c44-2064-4d23-a2de-8325b698c445
+# ╟─9e3fcfd0-263e-4b34-929b-ed039e4912bb
+# ╟─c0f357dd-80b1-4eac-9dba-27a2f59104c4
+# ╟─5b266d93-1808-4422-84b4-385a0e7f60e5
 # ╟─0edceeff-c115-4ab2-966b-8aa90db4950a
 # ╟─a453b84f-42d3-4e34-b891-d95388bcf15b
-# ╠═ed3027f6-f87b-480d-87e9-0460188fe3be
-# ╠═27a7b312-e352-45f5-8717-cc4368c9e7ff
-# ╟─6a6f9a01-79ae-4a4e-b8f4-99242806989f
+# ╠═6a6f9a01-79ae-4a4e-b8f4-99242806989f
 # ╠═1a61b700-1ab7-495e-bfce-bd689996bd1f
-# ╠═68835cc4-99e9-4b2e-a941-504916e1be1e
 # ╠═417630b7-213e-4456-bf99-1ab735f0c963
-# ╠═0267882f-012f-46f4-9439-c9f8ac1bfba8
-# ╟─2529b704-1c93-4877-8b39-b98e99d5092a
-# ╟─34983698-efd8-42d7-a2d0-f4a17dc1c324
+# ╠═4f5c4623-7a39-43b2-9e20-a298c0ab5714
+# ╠═11fb513f-9853-4c64-a4c8-be63fbe35b05
+# ╟─b934909b-a3a6-424f-9424-b82c316671b3
+# ╠═2529b704-1c93-4877-8b39-b98e99d5092a
+# ╠═34983698-efd8-42d7-a2d0-f4a17dc1c324
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
