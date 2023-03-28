@@ -267,7 +267,21 @@ $(slide_title(md"2023/03/07"))
 $(slide_title(md"2023/03/21"))
 
 ### Updates
-$(LocalResource("/home/mango/Desktop/FeU5Kx8UcAE7qcB.jpeg"))
+$(Resource("https://media.tenor.com/-ATvpKmFQJ8AAAAd/tinder-my5n5.gif"))
+"""
+
+# ╔═╡ d5e2412d-3407-47ad-a2f5-311e93ea6876
+@mdx """
+$(slide_title(md"2023/03/28"))
+
+### Last week
+* Still waiting to hear back from Lake Mead
+
+### Yesterday
+* SETI Affil 📡
+
+### Looking forward
+* Starting up with GBI and planning next star party
 """
 
 # ╔═╡ 1a61b700-1ab7-495e-bfce-bd689996bd1f
@@ -649,15 +663,16 @@ version = "17.4.0+0"
 # ╟─9e3fcfd0-263e-4b34-929b-ed039e4912bb
 # ╟─c0f357dd-80b1-4eac-9dba-27a2f59104c4
 # ╟─5b266d93-1808-4422-84b4-385a0e7f60e5
+# ╟─d5e2412d-3407-47ad-a2f5-311e93ea6876
 # ╟─0edceeff-c115-4ab2-966b-8aa90db4950a
 # ╟─a453b84f-42d3-4e34-b891-d95388bcf15b
-# ╠═6a6f9a01-79ae-4a4e-b8f4-99242806989f
-# ╠═1a61b700-1ab7-495e-bfce-bd689996bd1f
-# ╠═417630b7-213e-4456-bf99-1ab735f0c963
-# ╠═4f5c4623-7a39-43b2-9e20-a298c0ab5714
-# ╠═11fb513f-9853-4c64-a4c8-be63fbe35b05
+# ╟─6a6f9a01-79ae-4a4e-b8f4-99242806989f
+# ╟─1a61b700-1ab7-495e-bfce-bd689996bd1f
+# ╟─417630b7-213e-4456-bf99-1ab735f0c963
+# ╟─4f5c4623-7a39-43b2-9e20-a298c0ab5714
+# ╟─11fb513f-9853-4c64-a4c8-be63fbe35b05
 # ╟─b934909b-a3a6-424f-9424-b82c316671b3
-# ╠═2529b704-1c93-4877-8b39-b98e99d5092a
+# ╟─2529b704-1c93-4877-8b39-b98e99d5092a
 # ╠═34983698-efd8-42d7-a2d0-f4a17dc1c324
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
