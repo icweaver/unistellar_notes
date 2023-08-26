@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.22
+# v0.19.27
 
 using Markdown
 using InteractiveUtils
@@ -13,6 +13,27 @@ end
 # ╔═╡ 60126b56-338b-11ed-27b5-3fad1727c222
 @mdx """
 <button onclick='present()'>Present</button>
+"""
+
+# ╔═╡ 066d094e-5f59-48da-8d69-4486c128ee2d
+html"""
+<iframe src="https://www.google.com/maps/d/u/1/embed?mid=1y2WhRySxsXRiVOoSGtiKepuwkr14Qa0&ehbc=2E312F&noprof=1&z=2" width="640" height="480"></iframe>
+"""
+
+# ╔═╡ c1a2c873-795c-49d8-8c8b-ad4176816ba6
+md"""
+To inquire about joining UCAN, [send an email](mailto:iweaver@seti.org?cc=tesposito@seti.org) to the program's director: Ian Weaver.
+"""
+
+# ╔═╡ 184d632c-f64e-4ed8-8408-5814fbbf3c16
+html"""
+<em>To inquire about joining UCAN,
+<a href="mailto:iweaver@seti.org?cc=tesposito@seti.org&subject=UCAN Inquiry"> send an email </a> to the to the program's lead: Ian Weaver</em>
+"""
+
+# ╔═╡ 94f16079-8c43-4f33-bb0b-eca7774f6c0d
+html"""
+<iframe src="https://www.google.com/maps/d/embed?mid=1y2WhRySxsXRiVOoSGtiKepuwkr14Qa0&ehbc=2E312F" width="640" height="480"></iframe>
 """
 
 # ╔═╡ 0edceeff-c115-4ab2-966b-8aa90db4950a
@@ -392,7 +413,7 @@ PlutoUI = "~0.7.44"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.5"
+julia_version = "1.9.2"
 manifest_format = "2.0"
 project_hash = "c56075880f87fe8fc0a2e02bd1fe52fae97795b0"
 
@@ -427,7 +448,7 @@ version = "0.8.6"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
-version = "1.0.1+0"
+version = "1.0.5+0"
 
 [[deps.Crayons]]
 git-tree-sha1 = "249fe38abf76d48563e2f4556bebd215aa317e15"
@@ -503,7 +524,7 @@ version = "1.10.2+0"
 uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 
 [[deps.LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl", "OpenBLAS_jll", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[deps.Logging]]
@@ -522,14 +543,14 @@ version = "0.1.1"
 [[deps.MbedTLS_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
-version = "2.28.0+0"
+version = "2.28.2+0"
 
 [[deps.Mmap]]
 uuid = "a63ad114-7e13-5084-954f-fe012c677804"
 
 [[deps.MozillaCACerts_jll]]
 uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
-version = "2022.2.1"
+version = "2022.10.11"
 
 [[deps.NetworkOptions]]
 uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
@@ -538,7 +559,7 @@ version = "1.2.0"
 [[deps.OpenBLAS_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
 uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
-version = "0.3.20+0"
+version = "0.3.21+4"
 
 [[deps.Parsers]]
 deps = ["Dates"]
@@ -547,9 +568,9 @@ uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
 version = "2.4.2"
 
 [[deps.Pkg]]
-deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
+deps = ["Artifacts", "Dates", "Downloads", "FileWatching", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
-version = "1.8.0"
+version = "1.9.2"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
@@ -585,22 +606,28 @@ uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
 uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
 
 [[deps.SparseArrays]]
-deps = ["LinearAlgebra", "Random"]
+deps = ["Libdl", "LinearAlgebra", "Random", "Serialization", "SuiteSparse_jll"]
 uuid = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 
 [[deps.Statistics]]
 deps = ["LinearAlgebra", "SparseArrays"]
 uuid = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+version = "1.9.0"
+
+[[deps.SuiteSparse_jll]]
+deps = ["Artifacts", "Libdl", "Pkg", "libblastrampoline_jll"]
+uuid = "bea87d4a-7f5b-5778-9afe-8cc45184846c"
+version = "5.10.1+6"
 
 [[deps.TOML]]
 deps = ["Dates"]
 uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
-version = "1.0.0"
+version = "1.0.3"
 
 [[deps.Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
-version = "1.10.1"
+version = "1.10.0"
 
 [[deps.Test]]
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
@@ -626,12 +653,12 @@ uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 [[deps.Zlib_jll]]
 deps = ["Libdl"]
 uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
-version = "1.2.12+3"
+version = "1.2.13+0"
 
 [[deps.libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+deps = ["Artifacts", "Libdl"]
 uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-version = "5.1.1+0"
+version = "5.8.0+0"
 
 [[deps.nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
@@ -646,6 +673,10 @@ version = "17.4.0+0"
 
 # ╔═╡ Cell order:
 # ╟─60126b56-338b-11ed-27b5-3fad1727c222
+# ╠═066d094e-5f59-48da-8d69-4486c128ee2d
+# ╠═c1a2c873-795c-49d8-8c8b-ad4176816ba6
+# ╠═184d632c-f64e-4ed8-8408-5814fbbf3c16
+# ╠═94f16079-8c43-4f33-bb0b-eca7774f6c0d
 # ╟─9202ccba-2186-4231-9108-ad293d506246
 # ╟─052ced6d-7f46-4366-986c-5af076c5105a
 # ╟─56b4094b-bf8d-4a26-9970-bd841e0adc1f
@@ -662,11 +693,11 @@ version = "17.4.0+0"
 # ╟─bfb24c44-2064-4d23-a2de-8325b698c445
 # ╟─9e3fcfd0-263e-4b34-929b-ed039e4912bb
 # ╟─c0f357dd-80b1-4eac-9dba-27a2f59104c4
-# ╟─5b266d93-1808-4422-84b4-385a0e7f60e5
+# ╠═5b266d93-1808-4422-84b4-385a0e7f60e5
 # ╟─d5e2412d-3407-47ad-a2f5-311e93ea6876
 # ╟─0edceeff-c115-4ab2-966b-8aa90db4950a
 # ╟─a453b84f-42d3-4e34-b891-d95388bcf15b
-# ╟─6a6f9a01-79ae-4a4e-b8f4-99242806989f
+# ╠═6a6f9a01-79ae-4a4e-b8f4-99242806989f
 # ╟─1a61b700-1ab7-495e-bfce-bd689996bd1f
 # ╟─417630b7-213e-4456-bf99-1ab735f0c963
 # ╟─4f5c4623-7a39-43b2-9e20-a298c0ab5714
