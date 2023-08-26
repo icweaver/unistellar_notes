@@ -24,8 +24,8 @@ md"""
 
 	```math
 	\begin{align}
-	\frac{b}{2} &= θr \quad, \\
-	b &= \boxed{2 \theta r} \quad.
+	\frac{b}{2} &= \frac{θ}{2}r \quad, \\
+	b &= \boxed{\theta r} \quad.
 	\end{align}
 	``` 
 """
@@ -45,15 +45,12 @@ Let's try this for a sample target!
 r_eros = 0.76 * u"AU"
 
 # ╔═╡ c5244eaf-72c2-4f6c-aee9-c8194a22615f
-b = r_eros * [θ_eV1, θ_eV2]
+b = r_eros * [θ_eV1, θ_eV2] .|> x -> round(Int, u"km", x)
 
 # ╔═╡ 89450acf-04f2-4813-a0fd-9cb667c96557
 cm"""
 !!! tip "Result"
-	Alright, so it looks like we would need a minimum baseline of $(round(u"km", b[1])) and $(round(u"km", b[2])) to resolve a one pixel shift of an object $(r_eros) away on an eVscope 1 and eVscope 2, respectively.
-
-!!! warning
-	Maybe double this result. ``\theta`` only sweeps out half a triangle if we treat ``r`` as an altitude that bisects our larger triangle.
+	Alright, so it looks like we would need a minimum baseline of **$(b[1])** and **$(b[2])** to resolve a one pixel shift of an object $(r_eros) away on an eVscope 1 and eVscope 2, respectively.
 """
 
 # ╔═╡ 40b456c2-b068-4b55-a45e-e49f036e43d8
