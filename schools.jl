@@ -19,7 +19,9 @@ md"""
 md"""
 ## Load data
 
-Dataset taken from [IPEDS](https://nces.ed.gov/ipeds/use-the-data)
+Dataset taken from [IPEDS](https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx?year=2021&surveyNumber=1&sid=afbc262b-7477-44a3-9961-7f69fca449cf&rtid=7)
+
+I decided to go with the HD2021 dataset because it is the most recent complete dataset of accredited schools in the US. The complete glossary of field descriptions for each column in the dataset below is available [here](https://nces.ed.gov/ipeds/datacenter/data/HD2021_Dict.zip).
 """
 
 # ╔═╡ e9abb9a7-20d9-4901-ac43-b07d986cbc46
@@ -1792,7 +1794,7 @@ version = "3.5.0+0"
 """
 
 # ╔═╡ Cell order:
-# ╟─cbd8012e-04b1-481e-8626-232bade9ceed
+# ╠═cbd8012e-04b1-481e-8626-232bade9ceed
 # ╟─f24b6a53-2e24-4ac8-b5a7-5ca0b301882a
 # ╠═e9abb9a7-20d9-4901-ac43-b07d986cbc46
 # ╠═401bd703-ed02-49c4-bd9d-2340151817f8
