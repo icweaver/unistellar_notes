@@ -10,6 +10,18 @@ begin
 	using MarkdownLiteral: @mdx
 end
 
+# ╔═╡ cbd8012e-04b1-481e-8626-232bade9ceed
+md"""
+# US School System Overview 🍎
+"""
+
+# ╔═╡ f24b6a53-2e24-4ac8-b5a7-5ca0b301882a
+md"""
+## Load data
+
+Dataset taken from [IPEDS](https://nces.ed.gov/ipeds/use-the-data)
+"""
+
 # ╔═╡ e9abb9a7-20d9-4901-ac43-b07d986cbc46
 df = CSV.read("./data/hd2021.csv", DataFrame)
 
@@ -59,7 +71,13 @@ end
 			* consortia
 			* associations
 			* religious affiliation (requested in control question)
+
+	* `F1SYSNAM`
+		* Name of multi-institution or multi-campus organization
 """
+
+# ╔═╡ 220443b6-90bb-465d-af89-d576a0cdf704
+TableOfContents()
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1774,9 +1792,12 @@ version = "3.5.0+0"
 """
 
 # ╔═╡ Cell order:
-# ╠═1c4e27b2-7454-11ee-2683-33bc5c1ed468
+# ╟─cbd8012e-04b1-481e-8626-232bade9ceed
+# ╟─f24b6a53-2e24-4ac8-b5a7-5ca0b301882a
 # ╠═e9abb9a7-20d9-4901-ac43-b07d986cbc46
 # ╠═401bd703-ed02-49c4-bd9d-2340151817f8
-# ╠═54b69301-7cc9-4f00-880f-0801bda6065b
+# ╟─54b69301-7cc9-4f00-880f-0801bda6065b
+# ╠═220443b6-90bb-465d-af89-d576a0cdf704
+# ╠═1c4e27b2-7454-11ee-2683-33bc5c1ed468
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
