@@ -31,15 +31,15 @@ df = CSV.read("./data/hd2021.csv", DataFrame)
 
 # ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
 df_subset = @chain df begin
-	@aside schools = ("Santa Cruz", "San Jose State", "Hartnell", "San Francisco")
+	@aside schools = ("Santa Cruz", "San Jose State", "Hartnell")
 
-	# @rsubset begin
-	# 	any(occursin.(schools, :INSTNM))
-	# end
+	@rsubset begin
+		any(occursin.(schools, :INSTNM))
+	end
 
 	@select :INSTNM :INSTCAT :F1SYSTYP :F1SYSNAM
 
-	sort(:INSTCAT)
+	sort(:INSTNM)
 	
 end
 
@@ -1899,7 +1899,7 @@ version = "3.5.0+0"
 """
 
 # ╔═╡ Cell order:
-# ╠═cbd8012e-04b1-481e-8626-232bade9ceed
+# ╟─cbd8012e-04b1-481e-8626-232bade9ceed
 # ╟─f24b6a53-2e24-4ac8-b5a7-5ca0b301882a
 # ╠═e9abb9a7-20d9-4901-ac43-b07d986cbc46
 # ╠═401bd703-ed02-49c4-bd9d-2340151817f8
