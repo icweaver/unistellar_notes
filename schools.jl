@@ -7,6 +7,8 @@ using InteractiveUtils
 # ╔═╡ 1c4e27b2-7454-11ee-2683-33bc5c1ed468
 begin
 	using DataFramesMeta, PlutoUI, CSV, CairoMakie
+	using AlgebraOfGraphics
+	using AlgebraOfGraphics: opensans, firasans
 	using MarkdownLiteral: @mdx
 end
 
@@ -29,15 +31,15 @@ df = CSV.read("./data/hd2021.csv", DataFrame)
 
 # ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
 df_subset = @chain df begin
+	@aside schools = ("Santa Cruz", "San Jose State", "Hartnell", "San Francisco")
+
 	# @rsubset begin
-	# 	occursin("Santa Cruz", :INSTNM) ||
-	# 	occursin("San Jose State", :INSTNM) ||
-	# 	occursin("Hartnell", :INSTNM)
+	# 	any(occursin.(schools, :INSTNM))
 	# end
 
 	@select :INSTNM :INSTCAT :F1SYSTYP :F1SYSNAM
 
-	sort(:INSTNM)
+	sort(:INSTCAT)
 	
 end
 
@@ -83,9 +85,50 @@ end
 # ╔═╡ d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
 md"""
 ## Visualizations
+"""
 
+# ╔═╡ 3c9a35fe-a9dd-4963-85a3-d618112f466a
+md"""
+## School types
+"""
+
+# ╔═╡ eed10de6-7b12-4e1b-9775-84fae0db6763
+let
+	plt = data(df_subset) *
+		mapping(:INSTCAT => "Institution category") *
+		frequency()
+
+	draw(plt;
+		axis = (;
+			xticks = -2:6
+		),
+	) |> as_svg
+end
+
+# ╔═╡ 87ec2453-0a9d-47ee-996e-7cb528661c0d
+md"""
+### Map
 [Interactive map](https://nces.ed.gov/ipeds/collegemap/#)
 """
+
+# ╔═╡ 440cc542-b0ec-4f13-bd7b-e9f17e8aa57d
+md"""
+## Notebook setup
+"""
+
+# ╔═╡ 5709131a-4180-4db6-a0a3-214de12194b8
+begin
+	set_aog_theme!()
+	update_theme!(
+		Theme(
+			BarPlot = (;
+				bar_labels = :y,
+				label_font = firasans("Light"),
+				label_formatter = Int,
+			)
+		)
+	)
+end
 
 # ╔═╡ 220443b6-90bb-465d-af89-d576a0cdf704
 TableOfContents()
@@ -93,6 +136,7 @@ TableOfContents()
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
+AlgebraOfGraphics = "cbdf2221-f076-402e-a563-3d30da359d67"
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 DataFramesMeta = "1313f7d8-7da2-5740-9ea0-a2ca25f37964"
@@ -100,6 +144,7 @@ MarkdownLiteral = "736d6165-7244-6769-4267-6b50796e6954"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
+AlgebraOfGraphics = "~0.6.16"
 CSV = "~0.10.11"
 CairoMakie = "~0.10.11"
 DataFramesMeta = "~0.14.0"
@@ -113,7 +158,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.9.3"
 manifest_format = "2.0"
-project_hash = "9b2157cf308b34c85d3a98083c78f49f04b6b603"
+project_hash = "81bc9af4c69e1441dd454a1d9dcdf84b28b87fcd"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -151,6 +196,12 @@ weakdeps = ["StaticArrays"]
 
     [deps.Adapt.extensions]
     AdaptStaticArraysExt = "StaticArrays"
+
+[[deps.AlgebraOfGraphics]]
+deps = ["Colors", "Dates", "Dictionaries", "FileIO", "GLM", "GeoInterface", "GeometryBasics", "GridLayoutBase", "KernelDensity", "Loess", "Makie", "PlotUtils", "PooledArrays", "PrecompileTools", "RelocatableFolders", "StatsBase", "StructArrays", "Tables"]
+git-tree-sha1 = "c58b2c0f1161b8a2e79dcb1a0ec4b639c2406f15"
+uuid = "cbdf2221-f076-402e-a563-3d30da359d67"
+version = "0.6.16"
 
 [[deps.Animations]]
 deps = ["Colors"]
@@ -406,6 +457,12 @@ git-tree-sha1 = "bea7984f7e09aeb28a3b071c420a0186cb4fabad"
 uuid = "927a84f5-c5f4-47a5-9785-b46e178433df"
 version = "0.8.8"
 
+[[deps.Dictionaries]]
+deps = ["Indexing", "Random", "Serialization"]
+git-tree-sha1 = "e82c3c97b5b4ec111f3c1b55228cebc7510525a2"
+uuid = "85a47980-9c8c-11e8-2b9f-f7ca1fa99fb4"
+version = "0.3.25"
+
 [[deps.DiffResults]]
 deps = ["StaticArraysCore"]
 git-tree-sha1 = "782dd5f4561f5d267313f23853baaaa4c52ea621"
@@ -417,6 +474,17 @@ deps = ["IrrationalConstants", "LogExpFunctions", "NaNMath", "Random", "SpecialF
 git-tree-sha1 = "23163d55f885173722d1e4cf0f6110cdbaf7e272"
 uuid = "b552c78f-8df3-52c6-915a-8e097449b14b"
 version = "1.15.1"
+
+[[deps.Distances]]
+deps = ["LinearAlgebra", "Statistics", "StatsAPI"]
+git-tree-sha1 = "5225c965635d8c21168e32a12954675e7bea1151"
+uuid = "b4f34e82-e78d-54a5-968a-f98e89d6e8f7"
+version = "0.10.10"
+weakdeps = ["ChainRulesCore", "SparseArrays"]
+
+    [deps.Distances.extensions]
+    DistancesChainRulesCoreExt = "ChainRulesCore"
+    DistancesSparseArraysExt = "SparseArrays"
 
 [[deps.Distributed]]
 deps = ["Random", "Serialization", "Sockets"]
@@ -608,6 +676,12 @@ version = "1.0.10+0"
 deps = ["Random"]
 uuid = "9fa8497b-333b-5362-9e8d-4d0656e87820"
 
+[[deps.GLM]]
+deps = ["Distributions", "LinearAlgebra", "Printf", "Reexport", "SparseArrays", "SpecialFunctions", "Statistics", "StatsAPI", "StatsBase", "StatsFuns", "StatsModels"]
+git-tree-sha1 = "273bd1cd30768a2fddfa3fd63bbc746ed7249e5f"
+uuid = "38e38edf-8417-5370-95a0-9cbb8c7f171a"
+version = "1.9.0"
+
 [[deps.GPUArraysCore]]
 deps = ["Adapt"]
 git-tree-sha1 = "2d6ca471a6c7b536127afccfa7564b5b39227fe0"
@@ -726,6 +800,11 @@ deps = ["Artifacts", "JLLWrappers", "Libdl"]
 git-tree-sha1 = "3d09a9f60edf77f8a4d99f9e015e8fbf9989605d"
 uuid = "905a6f67-0a94-5f89-b386-d35d92009cd1"
 version = "3.1.7+0"
+
+[[deps.Indexing]]
+git-tree-sha1 = "ce1566720fd6b19ff3411404d4b977acd4814f9f"
+uuid = "313cdc1a-70c2-5d6a-ae34-0150d3930a38"
+version = "1.1.1"
 
 [[deps.IndirectArrays]]
 git-tree-sha1 = "012e604e1c7458645cb8b436f8fba789a51b257f"
@@ -947,6 +1026,12 @@ deps = ["LinearAlgebra", "Mods", "Permutations", "Primes", "SimplePolynomials"]
 git-tree-sha1 = "558a338f1eeabe933f9c2d4052aa7c2c707c3d52"
 uuid = "9b3f67b0-2d00-526e-9884-9e4938f8fb88"
 version = "0.1.12"
+
+[[deps.Loess]]
+deps = ["Distances", "LinearAlgebra", "Statistics", "StatsAPI"]
+git-tree-sha1 = "a113a8be4c6d0c64e217b472fb6e61c760eb4022"
+uuid = "4345ca2d-374a-55d4-8d30-97f9976e7612"
+version = "0.6.3"
 
 [[deps.LogExpFunctions]]
 deps = ["DocStringExtensions", "IrrationalConstants", "LinearAlgebra"]
@@ -1418,6 +1503,11 @@ version = "0.4.0"
 deps = ["Distributed", "Mmap", "Random", "Serialization"]
 uuid = "1a1011a3-84de-559e-8e89-a11a2f7dc383"
 
+[[deps.ShiftedArrays]]
+git-tree-sha1 = "503688b59397b3307443af35cd953a13e8005c16"
+uuid = "1277b4bf-5013-50f5-be3d-901d8477a67a"
+version = "2.0.0"
+
 [[deps.Showoff]]
 deps = ["Dates", "Grisu"]
 git-tree-sha1 = "91eddf657aca81df9ae6ceb20b959ae5653ad1de"
@@ -1546,6 +1636,12 @@ version = "1.3.0"
     [deps.StatsFuns.weakdeps]
     ChainRulesCore = "d360d2e6-b24c-11e9-a2a3-2a2ae2dbcce4"
     InverseFunctions = "3587e190-3f89-42d0-90ee-14403ec27112"
+
+[[deps.StatsModels]]
+deps = ["DataAPI", "DataStructures", "LinearAlgebra", "Printf", "REPL", "ShiftedArrays", "SparseArrays", "StatsAPI", "StatsBase", "StatsFuns", "Tables"]
+git-tree-sha1 = "5cf6c4583533ee38639f73b880f35fc85f2941e0"
+uuid = "3eaba693-59b7-5ba5-a881-562e759f1c8d"
+version = "0.7.3"
 
 [[deps.StringManipulation]]
 deps = ["PrecompileTools"]
@@ -1809,6 +1905,11 @@ version = "3.5.0+0"
 # ╠═401bd703-ed02-49c4-bd9d-2340151817f8
 # ╟─54b69301-7cc9-4f00-880f-0801bda6065b
 # ╟─d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
+# ╟─3c9a35fe-a9dd-4963-85a3-d618112f466a
+# ╠═eed10de6-7b12-4e1b-9775-84fae0db6763
+# ╟─87ec2453-0a9d-47ee-996e-7cb528661c0d
+# ╟─440cc542-b0ec-4f13-bd7b-e9f17e8aa57d
+# ╠═5709131a-4180-4db6-a0a3-214de12194b8
 # ╠═220443b6-90bb-465d-af89-d576a0cdf704
 # ╠═1c4e27b2-7454-11ee-2683-33bc5c1ed468
 # ╟─00000000-0000-0000-0000-000000000001
