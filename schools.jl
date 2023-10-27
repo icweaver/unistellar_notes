@@ -17,7 +17,7 @@ md"""
 
 # ╔═╡ f24b6a53-2e24-4ac8-b5a7-5ca0b301882a
 md"""
-## Load data
+## Data
 
 Dataset taken from [IPEDS](https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx?year=2021&surveyNumber=1&sid=afbc262b-7477-44a3-9961-7f69fca449cf&rtid=7)
 
@@ -28,14 +28,16 @@ I decided to go with the HD2021 dataset because it is the most recent complete d
 df = CSV.read("./data/hd2021.csv", DataFrame)
 
 # ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
-df_subset = @chain begin
-	@rsubset df begin
-		occursin("Santa Cruz", :INSTNM) ||
-		occursin("San Jose State", :INSTNM) ||
-		occursin("Hartnell", :INSTNM)
-	end
+df_subset = @chain df begin
+	# @rsubset begin
+	# 	occursin("Santa Cruz", :INSTNM) ||
+	# 	occursin("San Jose State", :INSTNM) ||
+	# 	occursin("Hartnell", :INSTNM)
+	# end
 
 	@select :INSTNM :INSTCAT :F1SYSTYP :F1SYSNAM
+
+	sort(:INSTNM)
 	
 end
 
@@ -76,6 +78,13 @@ end
 
 	* `F1SYSNAM`
 		* Name of multi-institution or multi-campus organization
+"""
+
+# ╔═╡ d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
+md"""
+## Visualizations
+
+[Interactive map](https://nces.ed.gov/ipeds/collegemap/#)
 """
 
 # ╔═╡ 220443b6-90bb-465d-af89-d576a0cdf704
@@ -1799,6 +1808,7 @@ version = "3.5.0+0"
 # ╠═e9abb9a7-20d9-4901-ac43-b07d986cbc46
 # ╠═401bd703-ed02-49c4-bd9d-2340151817f8
 # ╟─54b69301-7cc9-4f00-880f-0801bda6065b
+# ╟─d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
 # ╠═220443b6-90bb-465d-af89-d576a0cdf704
 # ╠═1c4e27b2-7454-11ee-2683-33bc5c1ed468
 # ╟─00000000-0000-0000-0000-000000000001
