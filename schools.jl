@@ -127,21 +127,27 @@ md"""
 """
 
 # ╔═╡ 5d21683e-c34d-4efb-906e-a9b015c2e53b
-@bind level MultiCheckBox([
-		1 => "< 1 academic year",
-		2 => "1 - <2 academic years",
-		3 => "Associate’s degree",
-		4 => "2 - <4 academic years",
-		5 => "Bachelor’s degree",
-		6 => "Postbaccalaureate",
-		7 => "Master’s degree",
-		8 => "Post-master’s\ncertificate",
-		9 => "Doctor’s degree",
-	]; select_all=true, orientation=:column)
+begin
+	degrees = [
+		"< 1 academic year",
+		"1 - <2 academic years",
+		"Associate’s degree",
+		"2 - <4 academic years",
+		"Bachelor’s degree",
+		"Postbaccalaureate",
+		"Master’s degree",
+		"Post-master’s\ncertificate",
+		"Doctor’s degree",
+	];
+	
+	degree_levels = [i => degree for (i, degree) ∈ enumerate(degrees)]
+	
+	@bind level MultiCheckBox(degree_levels; select_all=true, orientation=:column)
+end
 
 # ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
 df = @chain df_raw begin
-	@aside schools = ("Santa Cruz", "Zorganics", "Hartnell", "Harvard", "Sonoma")
+	# @aside schools = ("Santa Cruz", "Zorganics", "Hartnell", "Harvard", "Sonoma")
 
 	@rsubset begin
 		# any(occursin.(schools, :INSTNM))
@@ -166,18 +172,6 @@ md"""
 
 # ╔═╡ eed10de6-7b12-4e1b-9775-84fae0db6763
 let
-	degree_levels = [
-		"< 1 academic year",
-		"1 - <2 academic years",
-		"Associate’s degree",
-		"2 - <4 academic years",
-		"Bachelor’s degree",
-		"Postbaccalaureate",
-		"Master’s degree",
-		"Post-master’s\ncertificate",
-		"Doctor’s degree",
-	]
-	
 	plt = data(df) *
 		mapping(:HLOFFER => "Highest level offered") *
 		frequency()
@@ -185,7 +179,7 @@ let
 	draw(plt;
 		figure = (; resolution=(900, 700)),
 		axis = (;
-			xticks = (1:9, degree_levels),
+			xticks = (1:9, degrees),
 			xticklabelrotation = π/5,
 		),
 	) |> as_svg
@@ -2004,7 +1998,7 @@ version = "3.5.0+0"
 # ╟─bff2552b-79fe-48e0-b684-83a7f74b7e38
 # ╟─5d21683e-c34d-4efb-906e-a9b015c2e53b
 # ╟─77b4a66b-4598-464d-81bd-427cc37b524c
-# ╟─eed10de6-7b12-4e1b-9775-84fae0db6763
+# ╠═eed10de6-7b12-4e1b-9775-84fae0db6763
 # ╟─21082908-d316-4980-b54f-6cd5ca09cd61
 # ╟─87ec2453-0a9d-47ee-996e-7cb528661c0d
 # ╟─440cc542-b0ec-4f13-bd7b-e9f17e8aa57d
