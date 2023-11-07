@@ -4,6 +4,16 @@
 using Markdown
 using InteractiveUtils
 
+# This Pluto notebook uses @bind for interactivity. When running this notebook outside of Pluto, the following 'mock version' of @bind gives bound variables a default value (instead of an error).
+macro bind(def, element)
+    quote
+        local iv = try Base.loaded_modules[Base.PkgId(Base.UUID("6e696c72-6542-2067-7265-42206c756150"), "AbstractPlutoDingetjes")].Bonds.initial_value catch; b -> missing; end
+        local el = $(esc(element))
+        global $(esc(def)) = Core.applicable(Base.get, el) ? Base.get(el) : iv(el)
+        el
+    end
+end
+
 # ╔═╡ 1c4e27b2-7454-11ee-2683-33bc5c1ed468
 begin
 	using DataFramesMeta, PlutoUI, CSV, CairoMakie
@@ -81,35 +91,77 @@ Here are the key selected fields I decided to focus on:
 	* `STABBR`: USPS state abbreviations
 """
 
+# ╔═╡ d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
+md"""
+## Visualizations
+"""
+
+# ╔═╡ 3c9a35fe-a9dd-4963-85a3-d618112f466a
+md"""
+### School types
+"""
+
+# ╔═╡ b9e2dcec-6a83-47fb-a49c-5dc34ea1c166
+md"""
+**State:**
+"""
+
+# ╔═╡ fbbf0d7f-ef9e-4192-bd84-a848a8a2634a
+@bind state MultiCheckBox(sort(unique(df_raw.STABBR)); select_all=true)
+
+# ╔═╡ de1de6c4-39de-4548-a7b8-47305128f7f1
+md"""
+**Control:**
+"""
+
+# ╔═╡ 5405b5e3-eb42-4c89-b230-306f527a2836
+@bind control MultiCheckBox([
+	1 => "Public",
+	2 => "Private not-for-profit",
+	3 => "Private for-profit",
+])
+
+# ╔═╡ bff2552b-79fe-48e0-b684-83a7f74b7e38
+md"""
+**Level:**
+"""
+
+# ╔═╡ 5d21683e-c34d-4efb-906e-a9b015c2e53b
+@bind level MultiCheckBox([
+		1 => "< 1 academic year",
+		2 => "1 - <2 academic years",
+		3 => "Associate’s degree",
+		4 => "2 - <4 academic years",
+		5 => "Bachelor’s degree",
+		6 => "Postbaccalaureate",
+		7 => "Master’s degree",
+		8 => "Post-master’s\ncertificate",
+		9 => "Doctor’s degree",
+	]; select_all=true, orientation=:column)
+
 # ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
 df = @chain df_raw begin
 	@aside schools = ("Santa Cruz", "Zorganics", "Hartnell", "Harvard", "Sonoma")
 
 	@rsubset begin
 		# any(occursin.(schools, :INSTNM))
-		:CONTROL > 0 && :F1SYSTYP > 0
+		:STABBR ∈ state
+		:CONTROL ∈ control
+		:HLOFFER ∈ level
 	end
 
 	@select :INSTNM :CONTROL :HLOFFER :F1SYSTYP :F1SYSNAM :STABBR
 
-	sort(:INSTNM)
+	sort([:STABBR, :INSTNM])
 	
 end;
-
-# ╔═╡ d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
-md"""
-## Visualizations
-"""
 
 # ╔═╡ dc39bd55-8e78-4058-b993-2593e248be2c
 gdf_states = groupby(df, :STABBR);
 
-# ╔═╡ da1b245d-9c37-47f6-8fcf-a45ed2066e54
-gdf_states[("MD",)]
-
-# ╔═╡ 3c9a35fe-a9dd-4963-85a3-d618112f466a
+# ╔═╡ 77b4a66b-4598-464d-81bd-427cc37b524c
 md"""
-## School types
+**Total number of schools: $(nrow(df))**
 """
 
 # ╔═╡ eed10de6-7b12-4e1b-9775-84fae0db6763
@@ -131,6 +183,7 @@ let
 		frequency()
 
 	draw(plt;
+		figure = (; resolution=(900, 700)),
 		axis = (;
 			xticks = (1:9, degree_levels),
 			xticklabelrotation = π/5,
@@ -138,10 +191,13 @@ let
 	) |> as_svg
 end
 
+# ╔═╡ 21082908-d316-4980-b54f-6cd5ca09cd61
+@rsubset df :STABBR ∈ state
+
 # ╔═╡ 87ec2453-0a9d-47ee-996e-7cb528661c0d
 md"""
 ### Map
-[Interactive map](https://nces.ed.gov/ipeds/collegemap/#)
+[Interactive map](https://nces.ed.gov/ipeds/collegemap/#) from NCES
 """
 
 # ╔═╡ 440cc542-b0ec-4f13-bd7b-e9f17e8aa57d
@@ -1940,9 +1996,16 @@ version = "3.5.0+0"
 # ╠═401bd703-ed02-49c4-bd9d-2340151817f8
 # ╟─d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
 # ╠═dc39bd55-8e78-4058-b993-2593e248be2c
-# ╠═da1b245d-9c37-47f6-8fcf-a45ed2066e54
 # ╟─3c9a35fe-a9dd-4963-85a3-d618112f466a
-# ╠═eed10de6-7b12-4e1b-9775-84fae0db6763
+# ╟─b9e2dcec-6a83-47fb-a49c-5dc34ea1c166
+# ╟─fbbf0d7f-ef9e-4192-bd84-a848a8a2634a
+# ╟─de1de6c4-39de-4548-a7b8-47305128f7f1
+# ╟─5405b5e3-eb42-4c89-b230-306f527a2836
+# ╟─bff2552b-79fe-48e0-b684-83a7f74b7e38
+# ╟─5d21683e-c34d-4efb-906e-a9b015c2e53b
+# ╟─77b4a66b-4598-464d-81bd-427cc37b524c
+# ╟─eed10de6-7b12-4e1b-9775-84fae0db6763
+# ╟─21082908-d316-4980-b54f-6cd5ca09cd61
 # ╟─87ec2453-0a9d-47ee-996e-7cb528661c0d
 # ╟─440cc542-b0ec-4f13-bd7b-e9f17e8aa57d
 # ╠═5709131a-4180-4db6-a0a3-214de12194b8
