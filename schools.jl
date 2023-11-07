@@ -29,7 +29,7 @@ I decided to go with the HD2021 dataset because it is the most recent complete d
 """
 
 # ╔═╡ e9abb9a7-20d9-4901-ac43-b07d986cbc46
-df = CSV.read("./data/hd2021.csv", DataFrame)
+df_raw = CSV.read("./data/hd2021.csv", DataFrame)
 
 # ╔═╡ 7689e4da-3fdb-4deb-81f8-041646f59e44
 md"""
@@ -82,7 +82,7 @@ Here are the key selected fields I decided to focus on:
 """
 
 # ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
-df_subset = @chain df begin
+df = @chain df_raw begin
 	@aside schools = ("Santa Cruz", "Zorganics", "Hartnell", "Harvard", "Sonoma")
 
 	@rsubset begin
@@ -94,7 +94,7 @@ df_subset = @chain df begin
 
 	sort(:INSTNM)
 	
-end
+end;
 
 # ╔═╡ d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
 md"""
@@ -102,7 +102,7 @@ md"""
 """
 
 # ╔═╡ dc39bd55-8e78-4058-b993-2593e248be2c
-gdf_states = groupby(df_subset, :STABBR);
+gdf_states = groupby(df, :STABBR);
 
 # ╔═╡ da1b245d-9c37-47f6-8fcf-a45ed2066e54
 gdf_states[("MD",)]
@@ -126,7 +126,7 @@ let
 		"Doctor’s degree",
 	]
 	
-	plt = data(df_subset) *
+	plt = data(df) *
 		mapping(:HLOFFER => "Highest level offered") *
 		frequency()
 
@@ -137,22 +137,6 @@ let
 		),
 	) |> as_svg
 end
-
-# ╔═╡ 41e8c23a-f09f-49c9-a692-f6977f0b5711
-let
-	plt = data(df_subset) *
-		mapping(:F1SYSTYP => "School system type") *
-		frequency()
-
-	draw(plt;
-		axis = (;
-			xticks = -2:6
-		),
-	) |> as_svg
-end
-
-# ╔═╡ e55c9775-ba03-4bb4-8ab3-66543d96d3f0
-@rsubset df_subset :CONTROL == 3
 
 # ╔═╡ 87ec2453-0a9d-47ee-996e-7cb528661c0d
 md"""
@@ -1959,8 +1943,6 @@ version = "3.5.0+0"
 # ╠═da1b245d-9c37-47f6-8fcf-a45ed2066e54
 # ╟─3c9a35fe-a9dd-4963-85a3-d618112f466a
 # ╠═eed10de6-7b12-4e1b-9775-84fae0db6763
-# ╠═41e8c23a-f09f-49c9-a692-f6977f0b5711
-# ╠═e55c9775-ba03-4bb4-8ab3-66543d96d3f0
 # ╟─87ec2453-0a9d-47ee-996e-7cb528661c0d
 # ╟─440cc542-b0ec-4f13-bd7b-e9f17e8aa57d
 # ╠═5709131a-4180-4db6-a0a3-214de12194b8
