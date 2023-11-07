@@ -31,9 +31,6 @@ I decided to go with the HD2021 dataset because it is the most recent complete d
 # ╔═╡ e9abb9a7-20d9-4901-ac43-b07d986cbc46
 df = CSV.read("./data/hd2021.csv", DataFrame)
 
-# ╔═╡ a6838162-f4b0-48e1-9d5f-d8b6f9aea811
-names(df)
-
 # ╔═╡ 7689e4da-3fdb-4deb-81f8-041646f59e44
 md"""
 Here are the key selected fields I decided to focus on:
@@ -43,6 +40,11 @@ Here are the key selected fields I decided to focus on:
 @mdx """
 !!! note "Field descriptions"
 	* `INSTNM`: Institution (entity) name
+	<br><br>
+	* `CONTROL`: A classification of whether an institution is operated by publicly elected or appointed officials or by privately elected or appointed officials and derives its major source of funds from private sources.
+		* 1 - Public institution - An educational institution whose programs and activities are operated by publicly elected or appointed school officials and which is supported primarily by public funds.
+		* 2 - Private not-for-profit institution - A private institution in which the individual(s) or agency in control receives no compensation, other than wages, rent, or other expenses for the assumption of risk. These include both independent not-for-profit schools and those affiliated with a religious organization.
+		* 3 - Private for-profit institution - A private institution in which the individual(s) or agency in control receives compensation other than wages, rent, or other expenses for the assumption of risk.
 	<br><br>
 	* `HLOFFER`: Highest level of offering (generated, based on response to IC survey)
 		* 0 - Other
@@ -81,32 +83,34 @@ Here are the key selected fields I decided to focus on:
 
 # ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
 df_subset = @chain df begin
-	@aside schools = ("Santa Cruz", "San Jose State", "Hartnell", "Harvard", "Sonoma")
+	# @aside schools = ("Santa Cruz", "San Jose State", "Hartnell", "Harvard", "Sonoma")
 
-	@rsubset begin
-		any(occursin.(schools, :INSTNM))
-	end
+	# @rsubset begin
+	# 	any(occursin.(schools, :INSTNM))
+	# end
 
-	@select :INSTNM :HLOFFER :F1SYSTYP :F1SYSNAM :STABBR
+	@select :INSTNM :CONTROL :HLOFFER :F1SYSTYP :F1SYSNAM :STABBR
 
 	sort(:INSTNM)
 	
 end
-
-# ╔═╡ 7e3258f2-9005-45c7-9271-fd46db61baf4
-md"""
-Based on these descriptions,
-
-Community college: 
-"""
 
 # ╔═╡ d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
 md"""
 ## Visualizations
 """
 
-# ╔═╡ e3a73a17-263a-445f-9f0f-06dd68e385a3
-gdf_states = groupby(df_subset, :STABBR);
+# ╔═╡ dc39bd55-8e78-4058-b993-2593e248be2c
+gdf_states = groupby(df_subset, :STABBR;
+
+# ╔═╡ acb1016f-a3f0-4e07-bcbd-aee6344d56ee
+first(gdf_states)
+
+# ╔═╡ da1b245d-9c37-47f6-8fcf-a45ed2066e54
+gdf_states[("AL", 3)]
+
+# ╔═╡ fbbf039b-4db0-4e5f-83c9-89ccd4272a0f
+keys(gdf_states)
 
 # ╔═╡ 3c9a35fe-a9dd-4963-85a3-d618112f466a
 md"""
@@ -116,7 +120,7 @@ md"""
 # ╔═╡ eed10de6-7b12-4e1b-9775-84fae0db6763
 let
 	plt = data(df_subset) *
-		mapping(:INSTCAT => "Institution category") *
+		mapping(:HLOFFER => "Institution category") *
 		frequency()
 
 	draw(plt;
@@ -140,7 +144,7 @@ let
 end
 
 # ╔═╡ e55c9775-ba03-4bb4-8ab3-66543d96d3f0
-@rsubset df_subset :F1SYSTYP < 0
+@rsubset df_subset :CONTROL == 3
 
 # ╔═╡ 87ec2453-0a9d-47ee-996e-7cb528661c0d
 md"""
@@ -1939,13 +1943,14 @@ version = "3.5.0+0"
 # ╟─cbd8012e-04b1-481e-8626-232bade9ceed
 # ╟─f24b6a53-2e24-4ac8-b5a7-5ca0b301882a
 # ╠═e9abb9a7-20d9-4901-ac43-b07d986cbc46
-# ╠═a6838162-f4b0-48e1-9d5f-d8b6f9aea811
 # ╟─7689e4da-3fdb-4deb-81f8-041646f59e44
 # ╟─54b69301-7cc9-4f00-880f-0801bda6065b
 # ╠═401bd703-ed02-49c4-bd9d-2340151817f8
-# ╠═7e3258f2-9005-45c7-9271-fd46db61baf4
 # ╟─d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
-# ╠═e3a73a17-263a-445f-9f0f-06dd68e385a3
+# ╠═dc39bd55-8e78-4058-b993-2593e248be2c
+# ╠═acb1016f-a3f0-4e07-bcbd-aee6344d56ee
+# ╠═da1b245d-9c37-47f6-8fcf-a45ed2066e54
+# ╠═fbbf039b-4db0-4e5f-83c9-89ccd4272a0f
 # ╟─3c9a35fe-a9dd-4963-85a3-d618112f466a
 # ╠═eed10de6-7b12-4e1b-9775-84fae0db6763
 # ╠═41e8c23a-f09f-49c9-a692-f6977f0b5711
