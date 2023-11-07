@@ -112,28 +112,27 @@ md"""
 ## School types
 """
 
-# ╔═╡ 191f05d6-4d93-416d-b07a-573e7aeeae9d
-yee = [
-	"< 1 academic year",
-	"1 - <2 academic years",
-	"Associate’s degree",
-	"2 - <4 academic years",
-	"Bachelor’s degree",
-	"Postbaccalaureate",
-	"Master’s degree",
-	"Post-master’s\ncertificate",
-	"Doctor’s degree",
-]
-
 # ╔═╡ eed10de6-7b12-4e1b-9775-84fae0db6763
 let
+	degree_levels = [
+		"< 1 academic year",
+		"1 - <2 academic years",
+		"Associate’s degree",
+		"2 - <4 academic years",
+		"Bachelor’s degree",
+		"Postbaccalaureate",
+		"Master’s degree",
+		"Post-master’s\ncertificate",
+		"Doctor’s degree",
+	]
+	
 	plt = data(df_subset) *
 		mapping(:HLOFFER => "Highest level offered") *
 		frequency()
 
 	draw(plt;
 		axis = (;
-			xticks = (1:9, yee),
+			xticks = (1:9, degree_levels),
 			xticklabelrotation = π/5,
 		),
 	) |> as_svg
@@ -1960,7 +1959,6 @@ version = "3.5.0+0"
 # ╠═da1b245d-9c37-47f6-8fcf-a45ed2066e54
 # ╟─3c9a35fe-a9dd-4963-85a3-d618112f466a
 # ╠═eed10de6-7b12-4e1b-9775-84fae0db6763
-# ╠═191f05d6-4d93-416d-b07a-573e7aeeae9d
 # ╠═41e8c23a-f09f-49c9-a692-f6977f0b5711
 # ╠═e55c9775-ba03-4bb4-8ab3-66543d96d3f0
 # ╟─87ec2453-0a9d-47ee-996e-7cb528661c0d
