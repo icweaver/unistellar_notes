@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.30
+# v0.19.32
 
 using Markdown
 using InteractiveUtils
@@ -15,6 +15,8 @@ end
 # ╔═╡ cbd8012e-04b1-481e-8626-232bade9ceed
 md"""
 # US School System Overview 🍎
+
+Overview of different school types across all US states and territories.
 """
 
 # ╔═╡ f24b6a53-2e24-4ac8-b5a7-5ca0b301882a
@@ -29,41 +31,35 @@ I decided to go with the HD2021 dataset because it is the most recent complete d
 # ╔═╡ e9abb9a7-20d9-4901-ac43-b07d986cbc46
 df = CSV.read("./data/hd2021.csv", DataFrame)
 
-# ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
-df_subset = @chain df begin
-	@aside schools = ("Santa Cruz", "San Jose State", "Hartnell")
+# ╔═╡ a6838162-f4b0-48e1-9d5f-d8b6f9aea811
+names(df)
 
-	@rsubset begin
-		any(occursin.(schools, :INSTNM))
-	end
-
-	@select :INSTNM :INSTCAT :F1SYSTYP :F1SYSNAM
-
-	sort(:INSTNM)
-	
-end
+# ╔═╡ 7689e4da-3fdb-4deb-81f8-041646f59e44
+md"""
+Here are the key selected fields I decided to focus on:
+"""
 
 # ╔═╡ 54b69301-7cc9-4f00-880f-0801bda6065b
 @mdx """
 !!! note "Field descriptions"
-	* `INSTNM`
-		* Institution (entity) name
-
-	* `INSTCAT`
-		1) Degree-granting, graduate with no undergraduate degrees - These institutions offer a Master's degree, Doctor's degree  or a First-professional degree and do not offer a Bachelor's degree or an Associate's degree.
-
-		2) Degree-granting, primarily baccalaureate or above - These institutions offer a Bachelor's degree, Master's degree,Doctor's degree or a First-professional degree.  Also, the total number of degrees/certificates at or above the bachelor's level awarded divided by the total number of degrees/certificates awarded is greater than 50 percent.
-		
-		3) Degree-granting, not primarily baccalaureate or above - These institutions offer a Bachelor's degree, Master's degree, Doctor's degree,or a First-professional degree.  Also, the total number of degrees/certificates at or above the bachelor's level awarded divided by the total number of degrees/certificates awarded must be less than or equal to 50 percent.
-
-		4) Degree-granting, Associate's and certificates - Institutions offer an Associate's degree and may offer other postsecondary certificates, awards or diplomas of less than one academic year; at least one but less-than two academic years; at least two but less-than four academic years. This category also includes institutions that offer a postbaccalaureate certificate, Post-master's certificate or a First-professional certificate and the highest degree offered is an Associate's degree.
-
-		5) Nondegree-granting, above the baccalaureate - Institutions do not offer Associate's, Bachelor's, Master's, Doctor's or First-professional degrees, but offer either Postbaccaulaureate, Post-master's or First-professional certificates.
-
-		6) Nondegree-granting, sub-baccalaureate - Institutions do not offer Associate's, Bachelor's , Master's, Doctor's, or First-professional degrees, or certificates above the baccalaureate level. They do offer postsecondary certificates, awards or diplomas of less than one academic year; at least one but less than two academic years; or at least two but less than four academic years.
-
-	* `F1SYSTYP`
-		* Multi-institution or multi-campus organization.
+	* `INSTNM`: Institution (entity) name
+	<br><br>
+	* `HLOFFER`: Highest level of offering (generated, based on response to IC survey)
+		* 0 - Other
+		* 1 - Postsecondary award, certificate or diploma of less than one academic year
+		* 2 - Postsecondary award, certificate or diploma of at least one but less than two academic years
+		* 3 - Associate's degree
+		* 4 - Postsecondary award, certificate or diploma of at least two but less than four academic years
+		* 5 - Bachelor's degree
+		* 6 - Postbaccalaureate certificate
+		* 7 - Master's degree
+		* 8 - Post-master's certificate
+		* 9 - Doctor's degree
+		* b - None of the above or no answer
+		* -2 - Not applicable, first-professional only
+		* -3 - Not Available
+	<br><br>
+	* `F1SYSTYP`: Multi-institution or multi-campus organization.
 
 		* Is the institution part of a multi-institution or multi-campus organization that owns, governs, or controls the institution?
 		
@@ -77,15 +73,40 @@ end
 			* consortia
 			* associations
 			* religious affiliation (requested in control question)
+	<br><br>
+	* `F1SYSNAM`: Name of multi-institution or multi-campus organization
+	<br><br>
+	* `STABBR`: USPS state abbreviations
+"""
 
-	* `F1SYSNAM`
-		* Name of multi-institution or multi-campus organization
+# ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
+df_subset = @chain df begin
+	@aside schools = ("Santa Cruz", "San Jose State", "Hartnell", "Harvard", "Sonoma")
+
+	@rsubset begin
+		any(occursin.(schools, :INSTNM))
+	end
+
+	@select :INSTNM :HLOFFER :F1SYSTYP :F1SYSNAM :STABBR
+
+	sort(:INSTNM)
+	
+end
+
+# ╔═╡ 7e3258f2-9005-45c7-9271-fd46db61baf4
+md"""
+Based on these descriptions,
+
+Community college: 
 """
 
 # ╔═╡ d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
 md"""
 ## Visualizations
 """
+
+# ╔═╡ e3a73a17-263a-445f-9f0f-06dd68e385a3
+gdf_states = groupby(df_subset, :STABBR);
 
 # ╔═╡ 3c9a35fe-a9dd-4963-85a3-d618112f466a
 md"""
@@ -104,6 +125,22 @@ let
 		),
 	) |> as_svg
 end
+
+# ╔═╡ 41e8c23a-f09f-49c9-a692-f6977f0b5711
+let
+	plt = data(df_subset) *
+		mapping(:F1SYSTYP => "School system type") *
+		frequency()
+
+	draw(plt;
+		axis = (;
+			xticks = -2:6
+		),
+	) |> as_svg
+end
+
+# ╔═╡ e55c9775-ba03-4bb4-8ab3-66543d96d3f0
+@rsubset df_subset :F1SYSTYP < 0
 
 # ╔═╡ 87ec2453-0a9d-47ee-996e-7cb528661c0d
 md"""
@@ -1902,11 +1939,17 @@ version = "3.5.0+0"
 # ╟─cbd8012e-04b1-481e-8626-232bade9ceed
 # ╟─f24b6a53-2e24-4ac8-b5a7-5ca0b301882a
 # ╠═e9abb9a7-20d9-4901-ac43-b07d986cbc46
-# ╠═401bd703-ed02-49c4-bd9d-2340151817f8
+# ╠═a6838162-f4b0-48e1-9d5f-d8b6f9aea811
+# ╟─7689e4da-3fdb-4deb-81f8-041646f59e44
 # ╟─54b69301-7cc9-4f00-880f-0801bda6065b
+# ╠═401bd703-ed02-49c4-bd9d-2340151817f8
+# ╠═7e3258f2-9005-45c7-9271-fd46db61baf4
 # ╟─d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
+# ╠═e3a73a17-263a-445f-9f0f-06dd68e385a3
 # ╟─3c9a35fe-a9dd-4963-85a3-d618112f466a
 # ╠═eed10de6-7b12-4e1b-9775-84fae0db6763
+# ╠═41e8c23a-f09f-49c9-a692-f6977f0b5711
+# ╠═e55c9775-ba03-4bb4-8ab3-66543d96d3f0
 # ╟─87ec2453-0a9d-47ee-996e-7cb528661c0d
 # ╟─440cc542-b0ec-4f13-bd7b-e9f17e8aa57d
 # ╠═5709131a-4180-4db6-a0a3-214de12194b8
