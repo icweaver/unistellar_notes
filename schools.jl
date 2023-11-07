@@ -153,7 +153,7 @@ md"""
 # ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
 begin
 	df = @chain df_raw begin
-	# @aside schools = ("Santa Cruz", "Zorganics", "Hartnell", "Harvard", "Sonoma")
+	# @aside schools = ("Santa Cruz", "Haverford", "Hartnell", "Harvard", "Sonoma")
 
 	@rsubset begin
 		# any(occursin.(schools, :INSTNM))
