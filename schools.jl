@@ -145,8 +145,14 @@ begin
 	@bind level MultiCheckBox(degree_levels; select_all=true, orientation=:column)
 end
 
+# ╔═╡ 923fb8e7-dd5d-4b49-a25d-bbfb55a37fab
+md"""
+**System:** $(@bind system CheckBox())
+"""
+
 # ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
-df = @chain df_raw begin
+begin
+	df = @chain df_raw begin
 	# @aside schools = ("Santa Cruz", "Zorganics", "Hartnell", "Harvard", "Sonoma")
 
 	@rsubset begin
@@ -160,6 +166,9 @@ df = @chain df_raw begin
 
 	sort([:STABBR, :INSTNM])
 	
+	end
+
+	system && @rsubset! df :F1SYSTYP == system
 end;
 
 # ╔═╡ dc39bd55-8e78-4058-b993-2593e248be2c
@@ -1997,8 +2006,9 @@ version = "3.5.0+0"
 # ╟─5405b5e3-eb42-4c89-b230-306f527a2836
 # ╟─bff2552b-79fe-48e0-b684-83a7f74b7e38
 # ╟─5d21683e-c34d-4efb-906e-a9b015c2e53b
+# ╟─923fb8e7-dd5d-4b49-a25d-bbfb55a37fab
 # ╟─77b4a66b-4598-464d-81bd-427cc37b524c
-# ╠═eed10de6-7b12-4e1b-9775-84fae0db6763
+# ╟─eed10de6-7b12-4e1b-9775-84fae0db6763
 # ╟─21082908-d316-4980-b54f-6cd5ca09cd61
 # ╟─87ec2453-0a9d-47ee-996e-7cb528661c0d
 # ╟─440cc542-b0ec-4f13-bd7b-e9f17e8aa57d
