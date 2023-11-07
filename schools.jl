@@ -83,11 +83,12 @@ Here are the key selected fields I decided to focus on:
 
 # ╔═╡ 401bd703-ed02-49c4-bd9d-2340151817f8
 df_subset = @chain df begin
-	# @aside schools = ("Santa Cruz", "San Jose State", "Hartnell", "Harvard", "Sonoma")
+	@aside schools = ("Santa Cruz", "Zorganics", "Hartnell", "Harvard", "Sonoma")
 
-	# @rsubset begin
-	# 	any(occursin.(schools, :INSTNM))
-	# end
+	@rsubset begin
+		# any(occursin.(schools, :INSTNM))
+		:CONTROL > 0 && :F1SYSTYP > 0
+	end
 
 	@select :INSTNM :CONTROL :HLOFFER :F1SYSTYP :F1SYSNAM :STABBR
 
@@ -101,31 +102,39 @@ md"""
 """
 
 # ╔═╡ dc39bd55-8e78-4058-b993-2593e248be2c
-gdf_states = groupby(df_subset, :STABBR;
-
-# ╔═╡ acb1016f-a3f0-4e07-bcbd-aee6344d56ee
-first(gdf_states)
+gdf_states = groupby(df_subset, :STABBR);
 
 # ╔═╡ da1b245d-9c37-47f6-8fcf-a45ed2066e54
-gdf_states[("AL", 3)]
-
-# ╔═╡ fbbf039b-4db0-4e5f-83c9-89ccd4272a0f
-keys(gdf_states)
+gdf_states[("MD",)]
 
 # ╔═╡ 3c9a35fe-a9dd-4963-85a3-d618112f466a
 md"""
 ## School types
 """
 
+# ╔═╡ 191f05d6-4d93-416d-b07a-573e7aeeae9d
+yee = [
+	"< 1 academic year",
+	"1 - <2 academic years",
+	"Associate’s degree",
+	"2 - <4 academic years",
+	"Bachelor’s degree",
+	"Postbaccalaureate",
+	"Master’s degree",
+	"Post-master’s\ncertificate",
+	"Doctor’s degree",
+]
+
 # ╔═╡ eed10de6-7b12-4e1b-9775-84fae0db6763
 let
 	plt = data(df_subset) *
-		mapping(:HLOFFER => "Institution category") *
+		mapping(:HLOFFER => "Highest level offered") *
 		frequency()
 
 	draw(plt;
 		axis = (;
-			xticks = -2:6
+			xticks = (1:9, yee),
+			xticklabelrotation = π/5,
 		),
 	) |> as_svg
 end
@@ -1948,11 +1957,10 @@ version = "3.5.0+0"
 # ╠═401bd703-ed02-49c4-bd9d-2340151817f8
 # ╟─d5642ac5-2f5c-44cb-a7be-c6adfe89bd94
 # ╠═dc39bd55-8e78-4058-b993-2593e248be2c
-# ╠═acb1016f-a3f0-4e07-bcbd-aee6344d56ee
 # ╠═da1b245d-9c37-47f6-8fcf-a45ed2066e54
-# ╠═fbbf039b-4db0-4e5f-83c9-89ccd4272a0f
 # ╟─3c9a35fe-a9dd-4963-85a3-d618112f466a
 # ╠═eed10de6-7b12-4e1b-9775-84fae0db6763
+# ╠═191f05d6-4d93-416d-b07a-573e7aeeae9d
 # ╠═41e8c23a-f09f-49c9-a692-f6977f0b5711
 # ╠═e55c9775-ba03-4bb4-8ab3-66543d96d3f0
 # ╟─87ec2453-0a9d-47ee-996e-7cb528661c0d
